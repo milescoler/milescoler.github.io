@@ -18,4 +18,8 @@
 - [x] Test website locally
 - [x] Prepare for GitHub Pages deployment
 - [x] Document deployment instructions
+<<<<<<< HEAD
 - [ ] Finalize and present to user
+=======
+- [x] Finalize and present to user
+>>>>>>> f2860d5 (Initial commit)
