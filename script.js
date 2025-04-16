@@ -641,43 +641,37 @@ contactForm?.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData);
     
     // Basic validation
-    let isValid = true;
     const errors = {};
     
     if (!data.name?.trim()) {
         errors.name = 'Name is required';
-        isValid = false;
     }
     
     if (!data.email?.trim()) {
         errors.email = 'Email is required';
-        isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
         errors.email = 'Please enter a valid email address';
-        isValid = false;
     }
     
     if (!data.message?.trim()) {
         errors.message = 'Message is required';
-        isValid = false;
     }
     
-    // Display errors or submit form
-    if (!isValid) {
-        Object.keys(errors).forEach(field => {
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(el => el.remove());
+    document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+    
+    // Display errors if any
+    if (Object.keys(errors).length > 0) {
+        Object.entries(errors).forEach(([field, message]) => {
             const input = contactForm.querySelector(`[name="${field}"]`);
-            const errorElement = document.createElement('div');
-            errorElement.className = 'error-message';
-            errorElement.textContent = errors[field];
-            
-            // Remove any existing error message
-            const existingError = input.parentElement.querySelector('.error-message');
-            if (existingError) {
-                existingError.remove();
+            if (input) {
+                const errorElement = document.createElement('div');
+                errorElement.className = 'error-message';
+                errorElement.textContent = message;
+                input.parentElement.appendChild(errorElement);
+                input.classList.add('error');
             }
-            
-            input.parentElement.appendChild(errorElement);
-            input.classList.add('error');
         });
         return;
     }
@@ -689,13 +683,12 @@ contactForm?.addEventListener('submit', async (e) => {
     submitButton.textContent = 'Sending...';
     
     try {
-        // Replace this with your actual form submission logic
-        // For now, we'll simulate an API call
+        // Simulate form submission (replace with actual API call)
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Show success message
-        contactForm.reset();
+        // Show success message and reset form
         showNotification('Message sent successfully!', 'success');
+        contactForm.reset();
     } catch (error) {
         showNotification('Failed to send message. Please try again.', 'error');
     } finally {
@@ -706,6 +699,9 @@ contactForm?.addEventListener('submit', async (e) => {
 
 // Notification System
 function showNotification(message, type = 'success') {
+    // Remove existing notifications
+    document.querySelectorAll('.notification').forEach(el => el.remove());
+    
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
@@ -713,16 +709,14 @@ function showNotification(message, type = 'success') {
     document.body.appendChild(notification);
     
     // Trigger animation
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         notification.classList.add('show');
-    }, 10);
+    });
     
-    // Remove notification after 3 seconds
+    // Remove notification
     setTimeout(() => {
         notification.classList.remove('show');
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
+        setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
@@ -737,17 +731,21 @@ if (projectFilters && projectGrid) {
             
             // Update active filter button
             projectFilters.querySelectorAll('button').forEach(btn => {
-                btn.classList.remove('active');
+                btn.classList.toggle('active', btn === e.target);
             });
-            e.target.classList.add('active');
             
-            // Filter projects
+            // Filter projects with animation
             projectGrid.querySelectorAll('.project-card').forEach(project => {
-                if (filter === 'all' || project.dataset.category === filter) {
-                    project.style.display = 'block';
-                } else {
-                    project.style.display = 'none';
-                }
+                const matches = filter === 'all' || project.dataset.category === filter;
+                project.style.opacity = '0';
+                setTimeout(() => {
+                    project.style.display = matches ? 'block' : 'none';
+                    if (matches) {
+                        requestAnimationFrame(() => {
+                            project.style.opacity = '1';
+                        });
+                    }
+                }, 300);
             });
         }
     });
@@ -757,21 +755,21 @@ if (projectFilters && projectGrid) {
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.2
 };
 
-const observer = new IntersectionObserver((entries) => {
+const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
+            animationObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
 // Observe elements with animation classes
 document.querySelectorAll('.fade-in, .slide-in, .scale-in').forEach(element => {
-    observer.observe(element);
+    animationObserver.observe(element);
 });
 
 // Dark Mode Toggle
@@ -779,11 +777,19 @@ const darkModeToggle = document.querySelector('.dark-mode-toggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 function toggleDarkMode(e) {
-    if (e.matches) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
+    const isDark = e?.matches ?? e;
+    document.documentElement.classList.toggle('dark-mode', isDark);
+    if (darkModeToggle) {
+        darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     }
+}
+
+// Check for saved dark mode preference
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode !== null) {
+    toggleDarkMode(savedDarkMode === 'true');
+} else {
+    toggleDarkMode(prefersDarkScheme.matches);
 }
 
 // Listen for system dark mode changes
@@ -791,29 +797,17 @@ prefersDarkScheme.addListener(toggleDarkMode);
 
 // Manual dark mode toggle
 darkModeToggle?.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    
-    // Save preference
-    const isDarkMode = document.body.classList.contains('dark-mode');
+    const isDarkMode = !document.documentElement.classList.contains('dark-mode');
+    toggleDarkMode(isDarkMode);
     localStorage.setItem('darkMode', isDarkMode);
 });
 
-// Check for saved dark mode preference
-const savedDarkMode = localStorage.getItem('darkMode');
-if (savedDarkMode === 'true') {
-    document.body.classList.add('dark-mode');
-} else if (savedDarkMode === 'false') {
-    document.body.classList.remove('dark-mode');
-} else {
-    // If no preference saved, use system preference
-    toggleDarkMode(prefersDarkScheme);
-}
-
 // Lazy Loading Images
 if ('loading' in HTMLImageElement.prototype) {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    images.forEach(img => {
-        img.src = img.dataset.src;
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
     });
 } else {
     // Fallback for browsers that don't support lazy loading

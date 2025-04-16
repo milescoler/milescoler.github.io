@@ -21,7 +21,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-brand">CR</div>
+            <a href="#" class="navbar-brand">CR</a>
             <button class="navbar-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -32,13 +32,16 @@
                 <a href="#projects">Projects</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
+    <section id="home" class="hero section">
+        <div class="container fade-in">
             <div class="hero-content">
                 <span class="badge">Data Scientist & Statistician</span>
                 <h1>Cole Richards</h1>
@@ -64,16 +67,22 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
+    <section id="projects" class="projects section">
+        <div class="container fade-in">
             <div class="section-header">
                 <span class="badge">Portfolio</span>
                 <h2>Featured Projects</h2>
                 <p>A showcase of my data science and analytics work</p>
             </div>
+            <div class="project-filters">
+                <button class="btn btn-outline active" data-filter="all">All</button>
+                <button class="btn btn-outline" data-filter="data-viz">Data Visualization</button>
+                <button class="btn btn-outline" data-filter="machine-learning">Machine Learning</button>
+                <button class="btn btn-outline" data-filter="nlp">NLP</button>
+            </div>
             <div class="project-grid">
                 <!-- Data Visualization Project -->
-                <div class="project-card">
+                <div class="project-card" data-category="data-viz">
                     <div class="project-image">
                         <img src="images/viz-dashboard.png" alt="Data Visualization Dashboard">
                         <div class="project-overlay">
@@ -97,7 +106,7 @@
                 </div>
 
                 <!-- Machine Learning Project -->
-                <div class="project-card">
+                <div class="project-card" data-category="machine-learning">
                     <div class="project-image">
                         <img src="images/ml-project.png" alt="Machine Learning Classification">
                         <div class="project-overlay">
@@ -121,7 +130,7 @@
                 </div>
 
                 <!-- NLP Project -->
-                <div class="project-card">
+                <div class="project-card" data-category="nlp">
                     <div class="project-image">
                         <img src="images/nlp-project.png" alt="NLP Analysis">
                         <div class="project-overlay">
@@ -151,8 +160,8 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
+    <section id="about" class="about section">
+        <div class="container slide-in">
             <div class="section-header">
                 <span class="badge">About Me</span>
                 <h2>My Journey</h2>
@@ -197,8 +206,8 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
+    <section id="contact" class="contact section">
+        <div class="container scale-in">
             <div class="section-header">
                 <span class="badge">Contact</span>
                 <h2>Get in Touch</h2>
@@ -287,7 +296,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <button class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
