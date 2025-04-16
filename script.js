@@ -577,3 +577,247 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize skill bar animations
     animateSkillBars();
 });
+
+// Navigation Menu Toggle
+const navbarToggle = document.querySelector('.navbar-toggle');
+const navbarMenu = document.querySelector('.navbar-menu');
+
+navbarToggle?.addEventListener('click', () => {
+    navbarToggle.classList.toggle('active');
+    navbarMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navbarToggle?.contains(e.target) && !navbarMenu?.contains(e.target)) {
+        navbarToggle?.classList.remove('active');
+        navbarMenu?.classList.remove('active');
+    }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu after clicking a link
+            navbarToggle?.classList.remove('active');
+            navbarMenu?.classList.remove('active');
+        }
+    });
+});
+
+// Back to Top Button
+const backToTopButton = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopButton?.classList.add('visible');
+    } else {
+        backToTopButton?.classList.remove('visible');
+    }
+});
+
+backToTopButton?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Form Validation and Submission
+const contactForm = document.querySelector('.contact-form');
+
+contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    let isValid = true;
+    const errors = {};
+    
+    if (!data.name?.trim()) {
+        errors.name = 'Name is required';
+        isValid = false;
+    }
+    
+    if (!data.email?.trim()) {
+        errors.email = 'Email is required';
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        errors.email = 'Please enter a valid email address';
+        isValid = false;
+    }
+    
+    if (!data.message?.trim()) {
+        errors.message = 'Message is required';
+        isValid = false;
+    }
+    
+    // Display errors or submit form
+    if (!isValid) {
+        Object.keys(errors).forEach(field => {
+            const input = contactForm.querySelector(`[name="${field}"]`);
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.textContent = errors[field];
+            
+            // Remove any existing error message
+            const existingError = input.parentElement.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            input.parentElement.appendChild(errorElement);
+            input.classList.add('error');
+        });
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    
+    try {
+        // Replace this with your actual form submission logic
+        // For now, we'll simulate an API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Show success message
+        contactForm.reset();
+        showNotification('Message sent successfully!', 'success');
+    } catch (error) {
+        showNotification('Failed to send message. Please try again.', 'error');
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+    }
+});
+
+// Notification System
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Project Filtering
+const projectFilters = document.querySelector('.project-filters');
+const projectGrid = document.querySelector('.project-grid');
+
+if (projectFilters && projectGrid) {
+    projectFilters.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            const filter = e.target.dataset.filter;
+            
+            // Update active filter button
+            projectFilters.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            e.target.classList.add('active');
+            
+            // Filter projects
+            projectGrid.querySelectorAll('.project-card').forEach(project => {
+                if (filter === 'all' || project.dataset.category === filter) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+    });
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe elements with animation classes
+document.querySelectorAll('.fade-in, .slide-in, .scale-in').forEach(element => {
+    observer.observe(element);
+});
+
+// Dark Mode Toggle
+const darkModeToggle = document.querySelector('.dark-mode-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function toggleDarkMode(e) {
+    if (e.matches) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+// Listen for system dark mode changes
+prefersDarkScheme.addListener(toggleDarkMode);
+
+// Manual dark mode toggle
+darkModeToggle?.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    // Save preference
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+});
+
+// Check for saved dark mode preference
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode === 'true') {
+    document.body.classList.add('dark-mode');
+} else if (savedDarkMode === 'false') {
+    document.body.classList.remove('dark-mode');
+} else {
+    // If no preference saved, use system preference
+    toggleDarkMode(prefersDarkScheme);
+}
+
+// Lazy Loading Images
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src;
+    });
+} else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
