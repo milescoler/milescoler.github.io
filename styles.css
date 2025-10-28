@@ -272,6 +272,25 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+/* Fallback for broken images */
+.project-image img[alt]::after {
+    content: attr(alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 2rem;
 }
 
 .project-overlay {
