@@ -217,7 +217,7 @@ img {
   align-items: center;
   gap: 0.8rem;
   padding: 0.85rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
 
 .meta-item__icon {
@@ -268,8 +268,8 @@ img {
 .project__media,
 .project__body,
 .contact-card {
-  border-radius: 1rem;
-  padding: 1.15rem;
+  border-radius: 0.75rem;
+  padding: 1.35rem;
 }
 
 .card--image {
@@ -280,12 +280,29 @@ img {
 }
 
 .facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.25rem;
 }
 
 .fact {
-  border-radius: 999px;
-  padding: 0.7rem 0.95rem;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1rem;
+  background: rgba(13, 23, 36, 0.9);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.fact span {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fact strong {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
 }
 
 .list,
@@ -329,7 +346,9 @@ img {
 }
 
 .project {
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 240px minmax(0, 1fr);
+  align-items: start;
+  gap: 1.5rem;
 }
 
 .project__media {
@@ -382,7 +401,7 @@ img {
   object-fit: cover;
   object-position: center;
   background: transparent;
-  border-radius: 0.9rem;
+  border-radius: 0.45rem;
 }
 
 .card--image .media-card__image {
@@ -412,7 +431,7 @@ img {
 }
 
 .media-card__content {
-  padding: 0.65rem 0.15rem 0;
+  padding: 0.55rem 0 0;
 }
 
 .media-card__content .card__label {
@@ -430,6 +449,13 @@ img {
   margin: 0.25rem 0 0;
   font-size: 0.84rem;
   line-height: 1.45;
+  color: var(--muted);
+}
+
+.media-card__content--minimal p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -458,6 +484,10 @@ img {
 
   .split,
   .project {
+    grid-template-columns: 1fr;
+  }
+
+  .facts {
     grid-template-columns: 1fr;
   }
 

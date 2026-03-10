@@ -269,11 +269,17 @@ function MediaCard({ item, className }) {
   return (
     <div className={`${className}${item.variant ? ` media-card--${item.variant}` : ''}`}>
       <img className="media-card__image" src={item.src} alt={item.alt} />
-      <div className="media-card__content">
-        <span className="card__label">{item.tag}</span>
-        <h3>{item.label}</h3>
-        <p>{item.note}</p>
-      </div>
+      {item.minimalCaption ? (
+        <div className="media-card__content media-card__content--minimal">
+          <p>{item.note}</p>
+        </div>
+      ) : (
+        <div className="media-card__content">
+          <span className="card__label">{item.tag}</span>
+          <h3>{item.label}</h3>
+          <p>{item.note}</p>
+        </div>
+      )}
     </div>
   );
 }
