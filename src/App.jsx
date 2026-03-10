@@ -45,7 +45,6 @@ function App() {
       <main id="top" className="container">
         <motion.section
           className="hero hero--image"
-          style={{ '--hero-image': `url(${hero.backgroundImage.src})` }}
           {...sectionReveal}
         >
           <div className="hero__overlay">
@@ -218,25 +217,44 @@ function App() {
         <motion.section id="contact" className="section contact" {...sectionReveal}>
           <SectionHeading title="Contact" subtitle="I’m looking for work where I can have a strong impact." />
 
-          <p className="body-copy body-copy--wide">{contact.statement}</p>
+          <div className="contact-layout">
+            <div className="contact-intro">
+              <p className="body-copy body-copy--wide">{contact.statement}</p>
 
-          <div className="contact-grid">
-            <a className="contact-card" href={`mailto:${contact.primaryEmail}`}>
-              <span>Main contact</span>
-              <strong>{contact.primaryEmail}</strong>
-            </a>
-            <a className="contact-card" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-              <span>LinkedIn</span>
-              <strong>Connect with me</strong>
-            </a>
-            <a className="contact-card" href={contact.resumeUrl} download>
-              <span>Resume</span>
-              <strong>Download PDF</strong>
-            </a>
-            <a className="contact-card" href={`mailto:${contact.tridentEmail}`}>
-              <span>Trident</span>
-              <strong>{contact.tridentEmail}</strong>
-            </a>
+              <div className="contact-actions">
+                <a className="button" href={`mailto:${contact.primaryEmail}`}>
+                  <Mail size={16} />
+                  Email me
+                </a>
+                <a className="button button--ghost" href={contact.resumeUrl} download>
+                  <Download size={16} />
+                  Download resume
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-panel">
+              <div className="contact-panel__row">
+                <span>Main contact</span>
+                <a href={`mailto:${contact.primaryEmail}`}>{contact.primaryEmail}</a>
+              </div>
+              <div className="contact-panel__row">
+                <span>LinkedIn</span>
+                <a href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+                  Connect with me
+                </a>
+              </div>
+              <div className="contact-panel__row">
+                <span>GitHub</span>
+                <a href={contact.githubUrl} target="_blank" rel="noreferrer">
+                  {contact.githubUrl.replace('https://', '')}
+                </a>
+              </div>
+              <div className="contact-panel__row">
+                <span>Trident</span>
+                <a href={`mailto:${contact.tridentEmail}`}>{contact.tridentEmail}</a>
+              </div>
+            </div>
           </div>
         </motion.section>
       </main>
