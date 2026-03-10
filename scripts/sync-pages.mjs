@@ -12,6 +12,13 @@ if (existsSync(distAssetsDir)) {
   cpSync(distAssetsDir, targetAssetsDir, { recursive: true });
 }
 
+const indexSource = resolve(distDir, 'index.html');
+const indexTarget = resolve(root, 'index.html');
+
+if (existsSync(indexSource)) {
+  cpSync(indexSource, indexTarget);
+}
+
 const resumeSource = resolve(distDir, 'Cole-Richards-Resume.pdf');
 const resumeTarget = resolve(root, 'Cole-Richards-Resume.pdf');
 
