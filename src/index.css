@@ -110,6 +110,22 @@ img {
   padding: 0 0 4.5rem;
 }
 
+.hero--image {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(5, 12, 21, 0.34), rgba(5, 12, 21, 0.82)),
+    linear-gradient(90deg, rgba(5, 12, 21, 0.82), rgba(5, 12, 21, 0.34)),
+    var(--hero-image) center center / cover no-repeat;
+  min-height: 34rem;
+}
+
+.hero__overlay {
+  padding: 3rem;
+}
+
 .hero h1,
 .section-heading h2,
 .list-card h3,
@@ -182,7 +198,7 @@ img {
 }
 
 .button--ghost {
-  background: transparent;
+  background: rgba(8, 17, 27, 0.2);
   color: var(--text);
 }
 
@@ -251,7 +267,6 @@ img {
 .list-card,
 .project__media,
 .project__body,
-.project__media-card,
 .contact-card {
   border-radius: 1rem;
   padding: 1.15rem;
@@ -260,6 +275,8 @@ img {
 .card--image {
   overflow: hidden;
   padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .facts {
@@ -323,6 +340,8 @@ img {
   height: 100%;
   overflow: hidden;
   padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .project__body .body-copy {
@@ -362,8 +381,8 @@ img {
   height: 240px;
   object-fit: cover;
   object-position: center;
-  border-bottom: 1px solid var(--surface-border);
-  background: #0a1320;
+  background: transparent;
+  border-radius: 0.9rem;
 }
 
 .card--image .media-card__image {
@@ -382,8 +401,8 @@ img {
 
 .media-card--portrait .media-card__image {
   height: 320px;
-  object-fit: contain;
-  background: #09121d;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .media-card--tall .media-card__image {
@@ -393,7 +412,25 @@ img {
 }
 
 .media-card__content {
-  padding: 1rem 1.15rem 1.15rem;
+  padding: 0.65rem 0.15rem 0;
+}
+
+.media-card__content .card__label {
+  margin-bottom: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.media-card__content h3 {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.media-card__content p {
+  margin: 0.25rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 @media (max-width: 760px) {
@@ -413,6 +450,10 @@ img {
   .container {
     width: min(100% - 1.25rem, 920px);
     padding-top: 3rem;
+  }
+
+  .hero__overlay {
+    padding: 2rem;
   }
 
   .split,

@@ -43,34 +43,40 @@ function App() {
       </header>
 
       <main id="top" className="container">
-        <motion.section className="hero" {...sectionReveal}>
-          <p className="eyebrow">{hero.eyebrow}</p>
-          <h1>{hero.title}</h1>
-          <p className="hero__lede">{hero.lede}</p>
-          <p className="hero__body">{hero.body}</p>
+        <motion.section
+          className="hero hero--image"
+          style={{ '--hero-image': `url(${hero.backgroundImage.src})` }}
+          {...sectionReveal}
+        >
+          <div className="hero__overlay">
+            <p className="eyebrow">{hero.eyebrow}</p>
+            <h1>{hero.title}</h1>
+            <p className="hero__lede">{hero.lede}</p>
+            <p className="hero__body">{hero.body}</p>
 
-          <div className="actions">
-            <a className="button" href={`mailto:${contact.primaryEmail}`}>
-              <Mail size={16} />
-              Email
-            </a>
-            <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-              <Linkedin size={16} />
-              LinkedIn
-            </a>
-            <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
-              <Github size={16} />
-              GitHub
-            </a>
-            <a className="button button--ghost" href={contact.resumeUrl} download>
-              <Download size={16} />
-              Download resume
-            </a>
-          </div>
+            <div className="actions">
+              <a className="button" href={`mailto:${contact.primaryEmail}`}>
+                <Mail size={16} />
+                Email
+              </a>
+              <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+                <Linkedin size={16} />
+                LinkedIn
+              </a>
+              <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
+                <Github size={16} />
+                GitHub
+              </a>
+              <a className="button button--ghost" href={contact.resumeUrl} download>
+                <Download size={16} />
+                Download resume
+              </a>
+            </div>
 
-          <div className="hero__meta">
-            <MetaItem icon={<MapPinned size={16} />} label="Based in" value="Santa Monica / Los Angeles" />
-            <MetaItem icon={<GraduationCap size={16} />} label="Graduating" value="UCLA, June 2026" />
+            <div className="hero__meta">
+              <MetaItem icon={<MapPinned size={16} />} label="Based in" value="Santa Monica / Los Angeles" />
+              <MetaItem icon={<GraduationCap size={16} />} label="Graduating" value="UCLA, June 2026" />
+            </div>
           </div>
         </motion.section>
 

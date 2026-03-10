@@ -18,29 +18,14 @@ export const personalData = {
   hero: {
     eyebrow: 'Student founder working at the intersection of data, GIS, and field operations',
     title: 'I build operational systems for real-world problems.',
+    backgroundImage: {
+      src: fieldImage,
+      alt: 'Trident Ember Defense installation work in the field',
+    },
     lede:
       'I am a UCLA Statistics & Data Science student graduating in June 2026, and I spend most of my time building tools, mapping risk, and making complex work more usable.',
     body:
       'Right now that means wildfire resilience, GIS analysis, startup operations, and hands-on execution through Trident Ember Defense. I care about work that improves how people live and helps protect the places we depend on.',
-    featureCard:
-      'From wildfire installs on two-story homes to internal tools, quoting systems, and geospatial targeting workflows, I like work that demands precision, communication, and follow-through.',
-    signals: [
-      { label: 'Based in', value: 'Los Angeles / Santa Monica' },
-      { label: 'Graduating', value: 'UCLA, June 2026' },
-      { label: 'Looking for', value: 'GIS, climate, and data roles' },
-    ],
-    mediaPlaceholders: [
-      {
-        tag: 'Placeholder',
-        label: 'Editorial hero image',
-        note: 'Swap in a strong install, fieldwork, or coastal/outdoor photo.',
-      },
-      {
-        tag: 'Placeholder',
-        label: 'Map or dashboard detail',
-        note: 'Use a cropped GIS or wildfire-risk visualization.',
-      },
-    ],
   },
   profile: {
     intro:
@@ -172,12 +157,12 @@ export const personalData = {
       ],
       stack: ['ArcGIS', 'QGIS', 'R geospatial libraries', 'GIS workflows'],
       media: {
-        src: fieldImage,
-        alt: 'Trident Ember Defense field installation',
-        variant: 'landscape',
-        tag: 'Field work',
-        label: 'Wildfire protection in practice',
-        note: 'Field execution and installation work at Trident Ember Defense.',
+        src: mappingImage,
+        alt: 'Animated wildfire burn-line timeline map',
+        variant: 'tall',
+        tag: 'Burn history gif',
+        label: 'Wildfire burn lines over time',
+        note: 'A timeline of wildfire burn lines from the 1990s onward, shown in 5-year increments to reveal how risk has spread across the region.',
       },
     },
     {
@@ -201,43 +186,23 @@ export const personalData = {
       },
     },
     {
-      category: 'Internal Tools',
-      title: 'Trident Operations Suite',
+      category: 'Internal Tools + Mapping',
+      title: 'Operations and Planning Tools',
       description:
-        'A collection of internal business tools that replaced manual coordination with clearer systems for quoting, inventory, planning, and customer tracking.',
+        'I built Trident’s internal tools and mapping workflows together, because quoting, inventory, planning, and layout design all needed to connect instead of living in separate systems.',
       points: [
-        'Built to make a small startup move faster without adding software bloat.',
-        'Reduced repetitive admin work and gave the team better visibility into operations.',
-        'Turned ad hoc planning into repeatable workflows.',
+        'Combined CRM, quoting, inventory, and admin workflows into clearer internal systems.',
+        'Built the sprinkler planning workflow that made roofline and eave layouts faster and easier to revise.',
+        'Reduced manual coordination while making field execution more precise.',
       ],
-      stack: ['Supabase', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Netlify'],
+      stack: ['Supabase', 'Mapbox', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Netlify'],
       media: {
         src: internalToolImage,
-        alt: 'Internal tool dashboard screenshot',
+        alt: 'Trident operations and sprinkler planning tool screenshot',
         variant: 'landscape',
-        tag: 'Internal tools',
-        label: 'Operations suite',
-        note: 'CRM, quoting, inventory, and admin systems built for Trident operations.',
-      },
-    },
-    {
-      category: 'Mapping Tool',
-      title: '2D Sprinkler Planning Tool',
-      description:
-        'I built a 2D mapping tool to design sprinkler layouts faster and more consistently, replacing time-consuming hand drawings with a digital planning workflow.',
-      points: [
-        'Supports faster system design for rooflines, eaves, and installation planning.',
-        'Improves communication with crews and makes field execution more precise.',
-        'Saved hundreds of hours across system planning and revisions.',
-      ],
-      stack: ['Mapbox', 'HTML', 'CSS', 'JavaScript', 'Operational design'],
-      media: {
-        src: mappingImage,
-        alt: 'Animated sprinkler planning map',
-        variant: 'tall',
-        tag: 'Mapping gif',
-        label: '2D sprinkler planning tool',
-        note: 'Animated planning workflow for faster sprinkler layout and revisions.',
+        tag: 'Operations + mapping',
+        label: 'Planning interface',
+        note: 'The same operational system handled planning, customer tracking, and install preparation.',
       },
     },
   ],
