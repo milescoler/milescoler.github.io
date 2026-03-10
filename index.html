@@ -15,6 +15,21 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      const isLocalDev =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
+
+      if (isLocalDev) {
+        import('/src/main.jsx');
+      } else {
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = './assets/app.css';
+        document.head.appendChild(stylesheet);
+        const productionEntry = './assets/app.js';
+        import(/* @vite-ignore */ productionEntry);
+      }
+    </script>
   </body>
   </html>
