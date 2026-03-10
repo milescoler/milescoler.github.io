@@ -215,7 +215,7 @@ function App() {
         </motion.section>
 
         <motion.section id="contact" className="section contact" {...sectionReveal}>
-          <SectionHeading title="Contact" subtitle="I’m looking for work where I can have a strong impact." />
+          <SectionHeading title="Contact" />
 
           <div className="contact-layout">
             <div className="contact-intro">

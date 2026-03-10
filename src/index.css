@@ -24,7 +24,14 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top right, rgba(116, 185, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 20% 20%, rgba(116, 185, 255, 0.04), transparent 18%),
+    linear-gradient(rgba(116, 185, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 185, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, #07111a 0%, #08131f 52%, #06111b 100%);
+  background-size: auto, auto, 32px 32px, 32px 32px, auto;
+  background-position: top right, 20% 20%, center, center, center;
   color: var(--text);
   font-family: 'Manrope', sans-serif;
   line-height: 1.6;
@@ -113,19 +120,12 @@ img {
 .hero--image {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(6, 13, 22, 0.92), rgba(6, 13, 22, 0.98)),
-    radial-gradient(circle at top right, rgba(116, 185, 255, 0.08), transparent 28%),
-    linear-gradient(rgba(116, 185, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(116, 185, 255, 0.07) 1px, transparent 1px);
-  background-size: auto, auto, 32px 32px, 32px 32px;
-  background-position: center, top right, center, center;
+  background: transparent;
   min-height: 36rem;
 }
 
 .hero__overlay {
-  padding: 3rem;
-  background: linear-gradient(90deg, rgba(6, 13, 22, 0.22), rgba(6, 13, 22, 0.08));
+  padding: 3rem 0;
 }
 
 .hero h1,
