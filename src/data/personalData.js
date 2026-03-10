@@ -1,7 +1,7 @@
-import embercastImage from '../assets/cole/embercast.png';
+import embercastImage from '../assets/cole/embercast.jpg';
 import fieldImage from '../assets/cole/field.png';
 import headshotImage from '../assets/cole/headshot.png';
-import internalToolImage from '../assets/cole/internaltool.png';
+import internalToolImage from '../assets/cole/internaltool.jpg';
 import lifestyleImage from '../assets/cole/lifestyle.png';
 import mappingImage from '../assets/cole/mapping.gif';
 
