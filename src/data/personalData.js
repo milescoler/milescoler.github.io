@@ -229,7 +229,7 @@ export const personalData = {
   ],
   personal: {
     summary:
-      'Outside of school and startup work, I want this site to show that I am energized by movement, nature, and community. Surfing, hiking, volleyball, yoga, meditation, guitar, and time with my dog Toby are all part of how I stay sharp and grounded.',
+      'Outside of school and startup work, I spend a lot of time surfing, hiking, playing volleyball, practicing yoga and meditation, playing guitar, and hanging out with my dog Toby. Being outside and staying active keeps me grounded and is a real part of how I live.',
     featuredImage: {
       src: lifestyleImage,
       alt: 'Cole Richards lifestyle photo outdoors',

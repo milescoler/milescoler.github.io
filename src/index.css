@@ -379,6 +379,9 @@ img {
   padding: 0;
   border: 0;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project__media .media-card__image {
@@ -485,12 +488,12 @@ img {
 
 .project__media .media-card__content {
   padding: 0.75rem 1rem 0;
-  text-align: center;
+  text-align: left;
 }
 
 .project__media .media-card__content--minimal p {
   max-width: 18rem;
-  margin: 0 auto;
+  margin: 0;
 }
 
 @media (max-width: 760px) {
