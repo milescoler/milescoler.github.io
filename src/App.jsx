@@ -261,7 +261,7 @@ function MetaItem({ icon, label, value }) {
 
 function MediaCard({ item, className }) {
   return (
-    <div className={className}>
+    <div className={`${className}${item.variant ? ` media-card--${item.variant}` : ''}`}>
       <img className="media-card__image" src={item.src} alt={item.alt} />
       <div className="media-card__content">
         <span className="card__label">{item.tag}</span>

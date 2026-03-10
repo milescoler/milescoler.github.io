@@ -48,6 +48,7 @@ export const personalData = {
     headshot: {
       src: headshotImage,
       alt: 'Cole Richards headshot',
+      variant: 'headshot',
       tag: 'Headshot',
       label: 'Cole Richards',
       note: 'UCLA Statistics & Data Science student, founder, and engineer.',
@@ -173,6 +174,7 @@ export const personalData = {
       media: {
         src: fieldImage,
         alt: 'Trident Ember Defense field installation',
+        variant: 'landscape',
         tag: 'Field work',
         label: 'Wildfire protection in practice',
         note: 'Field execution and installation work at Trident Ember Defense.',
@@ -192,6 +194,7 @@ export const personalData = {
       media: {
         src: embercastImage,
         alt: 'EmberCast mobile dashboard screenshot',
+        variant: 'portrait',
         tag: 'Mobile app',
         label: 'EmberCast',
         note: 'Wildfire conditions dashboard and map views for homeowners and firefighters.',
@@ -211,6 +214,7 @@ export const personalData = {
       media: {
         src: internalToolImage,
         alt: 'Internal tool dashboard screenshot',
+        variant: 'landscape',
         tag: 'Internal tools',
         label: 'Operations suite',
         note: 'CRM, quoting, inventory, and admin systems built for Trident operations.',
@@ -230,6 +234,7 @@ export const personalData = {
       media: {
         src: mappingImage,
         alt: 'Animated sprinkler planning map',
+        variant: 'tall',
         tag: 'Mapping gif',
         label: '2D sprinkler planning tool',
         note: 'Animated planning workflow for faster sprinkler layout and revisions.',
@@ -266,6 +271,7 @@ export const personalData = {
     featuredImage: {
       src: lifestyleImage,
       alt: 'Cole Richards lifestyle photo outdoors',
+      variant: 'portrait',
       tag: 'Outside work',
       label: 'A life that stays close to the outdoors',
       note: 'The work matters, but so does where and how I live.',

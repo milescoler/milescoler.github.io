@@ -370,6 +370,28 @@ img {
   height: 320px;
 }
 
+.media-card--headshot .media-card__image {
+  height: 320px;
+  object-position: center top;
+}
+
+.media-card--landscape .media-card__image {
+  height: 170px;
+  object-position: center;
+}
+
+.media-card--portrait .media-card__image {
+  height: 320px;
+  object-fit: contain;
+  background: #09121d;
+}
+
+.media-card--tall .media-card__image {
+  height: 290px;
+  object-fit: cover;
+  object-position: center top;
+}
+
 .media-card__content {
   padding: 1rem 1.15rem 1.15rem;
 }
@@ -401,6 +423,16 @@ img {
   .card--image .media-card__image,
   .media-card__image {
     height: 260px;
+  }
+
+  .media-card--landscape .media-card__image {
+    height: 190px;
+  }
+
+  .media-card--portrait .media-card__image,
+  .media-card--tall .media-card__image,
+  .media-card--headshot .media-card__image {
+    height: 280px;
   }
 
   .list-card__top {
