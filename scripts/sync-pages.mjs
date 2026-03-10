@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const root = resolve('.');
@@ -7,6 +7,12 @@ const distAssetsDir = resolve(distDir, 'assets');
 const targetAssetsDir = resolve(root, 'assets');
 
 mkdirSync(targetAssetsDir, { recursive: true });
+
+for (const file of readdirSync(targetAssetsDir)) {
+  if (file.endsWith('.js') || file.endsWith('.css')) {
+    rmSync(resolve(targetAssetsDir, file), { force: true });
+  }
+}
 
 if (existsSync(distAssetsDir)) {
   cpSync(distAssetsDir, targetAssetsDir, { recursive: true });
