@@ -118,7 +118,7 @@ export const personalData = {
     {
       role: 'Inventory Specialist',
       company: 'UCLA Housing IT',
-      period: 'Aug 2024 - Present',
+      period: 'Aug 2024 - Dec 2025',
       location: 'UCLA',
       summary:
         'I support technology operations across UCLA Housing and Hospitality and look for ways to make tracking and restocking more systematic.',
