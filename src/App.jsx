@@ -78,11 +78,7 @@ function App() {
           <SectionHeading title="About" />
 
           <div className="split">
-            <div className="card card--image">
-              <span className="card__label">{profile.headshot.tag}</span>
-              <h3>{profile.headshot.label}</h3>
-              <p>{profile.headshot.note}</p>
-            </div>
+            <MediaCard item={profile.headshot} className="card card--image" />
 
             <div className="stack">
               {profile.paragraphs.map((paragraph) => (
@@ -146,9 +142,7 @@ function App() {
             {projects.map((project) => (
               <article key={project.title} className="project">
                 <div className="project__media">
-                  <span className="card__label">{project.media.tag}</span>
-                  <h3>{project.media.label}</h3>
-                  <p>{project.media.note}</p>
+                  <MediaCard item={project.media} className="project__media-card" />
                 </div>
 
                 <div className="project__body">
@@ -200,12 +194,18 @@ function App() {
         <motion.section id="life" className="section" {...sectionReveal}>
           <SectionHeading title="Outside work" subtitle="The human part of the story matters too." />
 
-          <p className="body-copy body-copy--wide">{personal.summary}</p>
+          <div className="split">
+            <MediaCard item={personal.featuredImage} className="card card--image" />
 
-          <div className="tags tags--large">
-            {personal.interests.map((interest) => (
-              <span key={interest.title}>{interest.title}</span>
-            ))}
+            <div>
+              <p className="body-copy body-copy--wide">{personal.summary}</p>
+
+              <div className="tags tags--large">
+                {personal.interests.map((interest) => (
+                  <span key={interest.title}>{interest.title}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.section>
 
@@ -254,6 +254,19 @@ function MetaItem({ icon, label, value }) {
       <div>
         <span>{label}</span>
         <strong>{value}</strong>
+      </div>
+    </div>
+  );
+}
+
+function MediaCard({ item, className }) {
+  return (
+    <div className={className}>
+      <img className="media-card__image" src={item.src} alt={item.alt} />
+      <div className="media-card__content">
+        <span className="card__label">{item.tag}</span>
+        <h3>{item.label}</h3>
+        <p>{item.note}</p>
       </div>
     </div>
   );

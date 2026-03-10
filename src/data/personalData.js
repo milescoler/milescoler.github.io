@@ -1,3 +1,10 @@
+import embercastImage from '../assets/cole/embercast.png';
+import fieldImage from '../assets/cole/field.png';
+import headshotImage from '../assets/cole/headshot.png';
+import internalToolImage from '../assets/cole/internaltool.png';
+import lifestyleImage from '../assets/cole/lifestyle.png';
+import mappingImage from '../assets/cole/mapping.gif';
+
 export const personalData = {
   name: 'Cole Richards',
   navigation: [
@@ -39,9 +46,11 @@ export const personalData = {
     intro:
       'The site should frame me as technical, grounded, and capable of turning ideas into operating systems, not just prototypes.',
     headshot: {
+      src: headshotImage,
+      alt: 'Cole Richards headshot',
       tag: 'Headshot',
-      label: 'Portrait placeholder',
-      note: 'Replace with your final headshot once selected.',
+      label: 'Cole Richards',
+      note: 'UCLA Statistics & Data Science student, founder, and engineer.',
     },
     paragraphs: [
       'I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base, but what really drives me is using technical skill in environments that are messy, physical, and high stakes.',
@@ -162,9 +171,11 @@ export const personalData = {
       ],
       stack: ['ArcGIS', 'QGIS', 'R geospatial libraries', 'GIS workflows'],
       media: {
-        tag: 'Placeholder',
-        label: 'Risk map visualization',
-        note: 'Add a polished screenshot of your fire-risk analysis.',
+        src: fieldImage,
+        alt: 'Trident Ember Defense field installation',
+        tag: 'Field work',
+        label: 'Wildfire protection in practice',
+        note: 'Field execution and installation work at Trident Ember Defense.',
       },
     },
     {
@@ -179,9 +190,11 @@ export const personalData = {
       ],
       stack: ['Swift', 'Public data APIs', 'Mapping interfaces', 'Forecast visualization'],
       media: {
-        tag: 'Placeholder',
-        label: 'EmberCast mobile screens',
-        note: 'Drop in 2 to 3 app screenshots once ready.',
+        src: embercastImage,
+        alt: 'EmberCast mobile dashboard screenshot',
+        tag: 'Mobile app',
+        label: 'EmberCast',
+        note: 'Wildfire conditions dashboard and map views for homeowners and firefighters.',
       },
     },
     {
@@ -196,9 +209,11 @@ export const personalData = {
       ],
       stack: ['Supabase', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Netlify'],
       media: {
-        tag: 'Placeholder',
-        label: 'Internal dashboard detail',
-        note: 'Use a clean screen capture of the CRM, quoting, or inventory UI.',
+        src: internalToolImage,
+        alt: 'Internal tool dashboard screenshot',
+        tag: 'Internal tools',
+        label: 'Operations suite',
+        note: 'CRM, quoting, inventory, and admin systems built for Trident operations.',
       },
     },
     {
@@ -213,9 +228,11 @@ export const personalData = {
       ],
       stack: ['Mapbox', 'HTML', 'CSS', 'JavaScript', 'Operational design'],
       media: {
-        tag: 'Placeholder',
-        label: 'Sprinkler planning interface',
-        note: 'Add a cropped planning view with annotations or path lines.',
+        src: mappingImage,
+        alt: 'Animated sprinkler planning map',
+        tag: 'Mapping gif',
+        label: '2D sprinkler planning tool',
+        note: 'Animated planning workflow for faster sprinkler layout and revisions.',
       },
     },
   ],
@@ -246,6 +263,13 @@ export const personalData = {
   personal: {
     summary:
       'Outside of school and startup work, I want this site to show that I am energized by movement, nature, and community. Surfing, hiking, volleyball, yoga, meditation, guitar, and time with my dog Toby are all part of how I stay sharp and grounded.',
+    featuredImage: {
+      src: lifestyleImage,
+      alt: 'Cole Richards lifestyle photo outdoors',
+      tag: 'Outside work',
+      label: 'A life that stays close to the outdoors',
+      note: 'The work matters, but so does where and how I live.',
+    },
     interests: [
       { icon: 'wave', title: 'Surfing', detail: 'A real part of how I reset and think.' },
       { icon: 'mountain', title: 'Outdoors', detail: 'Hiking, ocean time, and staying close to California landscapes.' },
