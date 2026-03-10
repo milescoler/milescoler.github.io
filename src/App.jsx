@@ -1,155 +1,99 @@
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
   ArrowUpRight,
   Download,
-  Flame,
   Github,
   GraduationCap,
-  Grid2X2,
   Linkedin,
   Mail,
   MapPinned,
-  Mountain,
-  MoveRight,
-  Shield,
-  Waves,
-  Wrench,
 } from 'lucide-react';
 import { personalData } from './data/personalData';
 
 const sectionReveal = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-};
-
-const iconMap = {
-  flame: Flame,
-  map: MapPinned,
-  tools: Wrench,
-  shield: Shield,
-  grid: Grid2X2,
-  school: GraduationCap,
-  wave: Waves,
-  mountain: Mountain,
+  transition: { duration: 0.45, ease: 'easeOut' },
 };
 
 function App() {
-  const {
-    name,
-    navigation,
-    hero,
-    profile,
-    focusAreas,
-    metrics,
-    work,
-    projects,
-    education,
-    personal,
-    contact,
-  } = personalData;
+  const { name, navigation, hero, profile, work, projects, education, personal, contact } = personalData;
 
   return (
-    <div className="site-shell">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-      <div className="grid-overlay" />
-
-      <header className="topbar">
-        <div className="topbar__inner">
+    <div className="page">
+      <header className="header">
+        <div className="header__inner">
           <a className="brand" href="#top">
-            <span className="brand__name">{name}</span>
-            <span className="brand__meta">{hero.eyebrow}</span>
+            {name}
           </a>
 
           <nav className="nav">
             {navigation.map((item) => (
-              <a key={item.href} href={item.href} className="nav__link">
+              <a key={item.href} href={item.href}>
                 {item.label}
               </a>
             ))}
           </nav>
 
-          <a className="button button--ghost button--compact" href={contact.resumeUrl} download>
+          <a className="button button--ghost" href={contact.resumeUrl} download>
             Resume
-            <Download size={16} />
           </a>
         </div>
       </header>
 
-      <main id="top">
+      <main id="top" className="container">
         <motion.section className="hero" {...sectionReveal}>
-          <div className="hero__copy">
-            <span className="eyebrow">{hero.eyebrow}</span>
-            <h1>{hero.title}</h1>
-            <p className="hero__lede">{hero.lede}</p>
-            <p className="hero__body">{hero.body}</p>
+          <p className="eyebrow">{hero.eyebrow}</p>
+          <h1>{hero.title}</h1>
+          <p className="hero__lede">{hero.lede}</p>
+          <p className="hero__body">{hero.body}</p>
 
-            <div className="button-row">
-              <a className="button" href={`mailto:${contact.primaryEmail}`}>
-                Email me
-                <Mail size={18} />
-              </a>
-              <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-                LinkedIn
-                <ArrowUpRight size={18} />
-              </a>
-              <a className="button button--ghost" href={contact.resumeUrl} download>
-                Download resume
-                <Download size={18} />
-              </a>
-            </div>
-
-            <div className="hero__signals">
-              {hero.signals.map((signal) => (
-                <div key={signal.label} className="signal-card">
-                  <span className="signal-card__label">{signal.label}</span>
-                  <strong>{signal.value}</strong>
-                </div>
-              ))}
-            </div>
+          <div className="actions">
+            <a className="button" href={`mailto:${contact.primaryEmail}`}>
+              <Mail size={16} />
+              Email
+            </a>
+            <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+              <Linkedin size={16} />
+              LinkedIn
+            </a>
+            <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
+              <Github size={16} />
+              GitHub
+            </a>
+            <a className="button button--ghost" href={contact.resumeUrl} download>
+              <Download size={16} />
+              Download resume
+            </a>
           </div>
 
-          <div className="hero__visuals">
-            <div className="editorial-panel editorial-panel--feature">
-              <span className="editorial-panel__tag">Field Notes</span>
-              <p>{hero.featureCard}</p>
-              <div className="editorial-panel__footer">
-                <span>Wildfire resilience</span>
-                <span>GIS + operations</span>
-              </div>
-            </div>
-
-            <div className="editorial-stack">
-              {hero.mediaPlaceholders.map((item) => (
-                <ImagePlaceholder key={item.label} item={item} />
-              ))}
-            </div>
+          <div className="hero__meta">
+            <MetaItem icon={<MapPinned size={16} />} label="Based in" value="Santa Monica / Los Angeles" />
+            <MetaItem icon={<GraduationCap size={16} />} label="Graduating" value="UCLA, June 2026" />
           </div>
         </motion.section>
 
         <motion.section id="about" className="section section--split" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Profile"
-            title="I build systems that work in the real world."
-            intro={profile.intro}
-          />
+          <SectionHeading title="About" />
 
-          <div className="profile-grid">
-            <div className="profile-card">
-              <ImagePlaceholder item={profile.headshot} />
+          <div className="split">
+            <div className="card card--image">
+              <span className="card__label">{profile.headshot.tag}</span>
+              <h3>{profile.headshot.label}</h3>
+              <p>{profile.headshot.note}</p>
             </div>
 
-            <div className="profile-story">
+            <div className="stack">
               {profile.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph} className="body-copy">
+                  {paragraph}
+                </p>
               ))}
 
-              <div className="fact-grid">
+              <div className="facts">
                 {profile.facts.map((fact) => (
-                  <div key={fact.label} className="fact-card">
+                  <div key={fact.label} className="fact">
                     <span>{fact.label}</span>
                     <strong>{fact.value}</strong>
                   </div>
@@ -159,143 +103,68 @@ function App() {
           </div>
         </motion.section>
 
-        <motion.section id="focus" className="section" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Focus"
-            title="My work sits between analysis, mapping, and execution."
-            intro="I want the site to make one thing obvious: I’m not only interested in models and dashboards. I like building tools that get used, communicating clearly, and making field work more precise."
-          />
-
-          <div className="focus-grid">
-            {focusAreas.map((area) => {
-              const Icon = iconMap[area.icon];
-
-              return (
-                <article key={area.title} className="focus-card">
-                  <div className="focus-card__icon">
-                    <Icon size={20} />
-                  </div>
-                  <h3>{area.title}</h3>
-                  <p>{area.description}</p>
-                </article>
-              );
-            })}
-          </div>
-        </motion.section>
-
-        <motion.section className="section" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Snapshot"
-            title="The numbers behind the narrative."
-            intro="These are the signals I want a recruiter, collaborator, or client to see quickly: I’ve already built real systems, led real work, and I’m still early in the story."
-          />
-
-          <div className="metrics-grid">
-            {metrics.map((metric) => (
-              <div key={metric.label} className="metric-card">
-                <strong>{metric.value}</strong>
-                <span>{metric.label}</span>
-                <p>{metric.detail}</p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
         <motion.section id="work" className="section" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Selected Work"
-            title="The strongest thread is wildfire resilience, but not the only one."
-            intro="Trident Ember Defense is the clearest proof of how I work: I build software, map risk, coordinate people, and push projects forward. UCLA and my broader coursework give that work a stronger data and GIS foundation."
-          />
+          <SectionHeading title="Work" subtitle="Selected roles and operating experience." />
 
-          <div className="timeline">
+          <div className="list">
             {work.map((item) => (
-              <article key={`${item.company}-${item.role}`} className="timeline-card">
-                <div className="timeline-card__meta">
-                  <span>{item.period}</span>
-                  <span>{item.location}</span>
-                </div>
-                <div className="timeline-card__body">
-                  <div className="timeline-card__heading">
-                    <div>
-                      <h3>{item.role}</h3>
-                      <p>{item.company}</p>
-                    </div>
+              <article key={`${item.company}-${item.role}`} className="list-card">
+                <div className="list-card__top">
+                  <div>
+                    <h3>{item.role}</h3>
+                    <p className="muted">
+                      {item.company} · {item.location}
+                    </p>
+                  </div>
+                  <div className="list-card__meta">
+                    <span>{item.period}</span>
                     {item.link ? (
-                      <a href={item.link} target="_blank" rel="noreferrer" className="inline-link">
+                      <a href={item.link} target="_blank" rel="noreferrer">
                         Visit
-                        <ArrowUpRight size={16} />
+                        <ArrowUpRight size={14} />
                       </a>
                     ) : null}
                   </div>
-
-                  <p className="timeline-card__summary">{item.summary}</p>
-
-                  <ul className="timeline-card__list">
-                    {item.highlights.map((highlight) => (
-                      <li key={highlight}>
-                        <ArrowRight size={16} />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="tag-row">
-                    {item.tools.map((tool) => (
-                      <span key={tool} className="tag">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
                 </div>
+
+                <p className="body-copy">{item.summary}</p>
+
+                <ul className="bullets">
+                  {item.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </motion.section>
 
         <motion.section id="projects" className="section" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Builds"
-            title="These are the projects I want to lead with."
-            intro="I’m intentionally not filling this section with class-assignment filler. The emphasis is on tools, mapping, and operational systems that solve specific problems."
-          />
+          <SectionHeading title="Projects" subtitle="Tools and systems I want to lead with." />
 
-          <div className="project-grid">
+          <div className="project-list">
             {projects.map((project) => (
-              <article key={project.title} className="project-card">
-                <div className="project-card__media">
-                  <ImagePlaceholder item={project.media} compact />
+              <article key={project.title} className="project">
+                <div className="project__media">
+                  <span className="card__label">{project.media.tag}</span>
+                  <h3>{project.media.label}</h3>
+                  <p>{project.media.note}</p>
                 </div>
 
-                <div className="project-card__copy">
-                  <div className="project-card__header">
-                    <div>
-                      <span className="project-card__eyebrow">{project.category}</span>
-                      <h3>{project.title}</h3>
-                    </div>
-                    {project.link ? (
-                      <a href={project.link} target="_blank" rel="noreferrer" className="inline-link">
-                        Open
-                        <ArrowUpRight size={16} />
-                      </a>
-                    ) : null}
-                  </div>
+                <div className="project__body">
+                  <p className="project__eyebrow">{project.category}</p>
+                  <h3>{project.title}</h3>
+                  <p className="body-copy">{project.description}</p>
 
-                  <p>{project.description}</p>
-                  <ul className="project-card__list">
+                  <ul className="bullets">
                     {project.points.map((point) => (
-                      <li key={point}>
-                        <MoveRight size={15} />
-                        <span>{point}</span>
-                      </li>
+                      <li key={point}>{point}</li>
                     ))}
                   </ul>
 
-                  <div className="tag-row">
-                    {project.stack.map((tool) => (
-                      <span key={tool} className="tag">
-                        {tool}
-                      </span>
+                  <div className="tags">
+                    {project.stack.map((item) => (
+                      <span key={item}>{item}</span>
                     ))}
                   </div>
                 </div>
@@ -305,22 +174,20 @@ function App() {
         </motion.section>
 
         <motion.section id="education" className="section section--split" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Education"
-            title="I’m building from a strong math foundation into applied GIS and data science."
-            intro="UCLA gives me the technical frame. My transfer path and earlier coursework in mathematics and computer science shaped how I approach systems: rigor first, then execution."
-          />
+          <SectionHeading title="Education" />
 
           <div className="education-grid">
             {education.map((item) => (
-              <article key={item.school} className="education-card">
-                <div className="education-card__top">
-                  <span>{item.period}</span>
-                  <span>{item.location}</span>
+              <article key={item.school} className="list-card">
+                <div className="list-card__top">
+                  <div>
+                    <h3>{item.school}</h3>
+                    <p className="muted">{item.degree}</p>
+                  </div>
+                  <span className="muted">{item.period}</span>
                 </div>
-                <h3>{item.school}</h3>
-                <p className="education-card__degree">{item.degree}</p>
-                <ul className="education-card__list">
+
+                <ul className="bullets">
                   {item.notes.map((note) => (
                     <li key={note}>{note}</li>
                   ))}
@@ -331,82 +198,39 @@ function App() {
         </motion.section>
 
         <motion.section id="life" className="section" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Outside Work"
-            title="The personal side matters here."
-            intro="I don’t want this site to feel detached from how I actually live. I care about being outside, staying active, and building a life that keeps me close to people, movement, and the places I want to help protect."
-          />
+          <SectionHeading title="Outside work" subtitle="The human part of the story matters too." />
 
-          <div className="life-layout">
-            <div className="life-copy">
-              <p>{personal.summary}</p>
-              <div className="interest-grid">
-                {personal.interests.map((interest) => {
-                  const Icon = iconMap[interest.icon];
+          <p className="body-copy body-copy--wide">{personal.summary}</p>
 
-                  return (
-                    <div key={interest.title} className="interest-card">
-                      <Icon size={18} />
-                      <div>
-                        <strong>{interest.title}</strong>
-                        <span>{interest.detail}</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="media-rail">
-              {personal.mediaPlaceholders.map((item) => (
-                <ImagePlaceholder key={item.label} item={item} compact />
-              ))}
-            </div>
+          <div className="tags tags--large">
+            {personal.interests.map((interest) => (
+              <span key={interest.title}>{interest.title}</span>
+            ))}
           </div>
         </motion.section>
 
-        <motion.section id="contact" className="section section--contact" {...sectionReveal}>
-          <SectionHeading
-            eyebrow="Contact"
-            title="I’m looking for work where I can have a strong impact."
-            intro="The best fit is a team working on climate tech, GIS, wildfire resilience, applied data science, or research with real-world stakes. If that sounds like your world, I’d like to talk."
-          />
+        <motion.section id="contact" className="section contact" {...sectionReveal}>
+          <SectionHeading title="Contact" subtitle="I’m looking for work where I can have a strong impact." />
 
-          <div className="contact-panel">
-            <div>
-              <p className="contact-panel__statement">{contact.statement}</p>
-              <div className="button-row">
-                <a className="button" href={`mailto:${contact.primaryEmail}`}>
-                  {contact.primaryEmail}
-                  <Mail size={18} />
-                </a>
-                <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-                  LinkedIn
-                  <Linkedin size={18} />
-                </a>
-                <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
-                  GitHub
-                  <Github size={18} />
-                </a>
-                <a className="button button--ghost" href={contact.resumeUrl} download>
-                  Resume
-                  <Download size={18} />
-                </a>
-              </div>
-            </div>
+          <p className="body-copy body-copy--wide">{contact.statement}</p>
 
-            <div className="contact-cards">
-              <div className="contact-card">
-                <span>Main contact</span>
-                <strong>{contact.primaryEmail}</strong>
-                <p>For recruiting, collaboration, or research opportunities.</p>
-              </div>
-              <div className="contact-card">
-                <span>Trident contact</span>
-                <strong>{contact.tridentEmail}</strong>
-                <p>For startup, partnership, or wildfire protection questions.</p>
-              </div>
-            </div>
+          <div className="contact-grid">
+            <a className="contact-card" href={`mailto:${contact.primaryEmail}`}>
+              <span>Main contact</span>
+              <strong>{contact.primaryEmail}</strong>
+            </a>
+            <a className="contact-card" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+              <span>LinkedIn</span>
+              <strong>Connect with me</strong>
+            </a>
+            <a className="contact-card" href={contact.resumeUrl} download>
+              <span>Resume</span>
+              <strong>Download PDF</strong>
+            </a>
+            <a className="contact-card" href={`mailto:${contact.tridentEmail}`}>
+              <span>Trident</span>
+              <strong>{contact.tridentEmail}</strong>
+            </a>
           </div>
         </motion.section>
       </main>
@@ -414,23 +238,23 @@ function App() {
   );
 }
 
-function SectionHeading({ eyebrow, title, intro }) {
+function SectionHeading({ title, subtitle }) {
   return (
     <div className="section-heading">
-      <span className="eyebrow">{eyebrow}</span>
       <h2>{title}</h2>
-      <p>{intro}</p>
+      {subtitle ? <p>{subtitle}</p> : null}
     </div>
   );
 }
 
-function ImagePlaceholder({ item, compact = false }) {
+function MetaItem({ icon, label, value }) {
   return (
-    <div className={`image-placeholder${compact ? ' image-placeholder--compact' : ''}`}>
-      <div className="image-placeholder__glow" />
-      <span className="image-placeholder__tag">{item.tag}</span>
-      <strong>{item.label}</strong>
-      <p>{item.note}</p>
+    <div className="meta-item">
+      <div className="meta-item__icon">{icon}</div>
+      <div>
+        <span>{label}</span>
+        <strong>{value}</strong>
+      </div>
     </div>
   );
 }
