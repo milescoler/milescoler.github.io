@@ -109,7 +109,7 @@ img {
 }
 
 .container {
-  padding: 20px 0 6rem;
+  padding: 0 0 6rem;
 }
 
 .hero,
@@ -125,7 +125,7 @@ img {
 }
 
 .hero__overlay {
-  padding: 8px 0 3rem;
+  padding: 0 0 3rem;
 }
 
 .hero h1,
@@ -542,7 +542,7 @@ img {
 
   .container {
     width: min(100% - 1.25rem, 920px);
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   .hero__overlay {
