@@ -1,164 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | Cole Richards</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found</title>
     <style>
-        .error-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--light-bg);
-            text-align: center;
-        }
-        
-        .dark-mode .error-page {
-            background-color: var(--dark-bg);
-        }
-        
-        .error-content {
-            max-width: 600px;
-            padding: 3rem;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        .dark-mode .error-content {
-            background-color: var(--light-bg);
-        }
-        
-        .error-code {
-            font-size: 8rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-        
-        .error-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .error-content p {
-            font-size: 1.2rem;
-            color: var(--text-color-light);
-            margin-bottom: 2rem;
-        }
-        
-        .error-content .button {
-            display: inline-block;
-            font-size: 1.1rem;
-            padding: 0.75rem 1.5rem;
-        }
-        
-        .error-illustration {
-            max-width: 300px;
-            margin: 0 auto 2rem;
-        }
-        
-        .error-illustration svg {
-            width: 100%;
-            height: auto;
-        }
-        
-        @media (max-width: 768px) {
-            .error-code {
-                font-size: 6rem;
-            }
-            
-            .error-content h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        .dark-mode-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-        
-        .dark-mode-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-        
-        .dark-mode .dark-mode-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+      :root {
+        color-scheme: dark;
+        --bg: #08111b;
+        --surface: #0d1724;
+        --border: #1a2838;
+        --text: #edf2f7;
+        --muted: #96a5b8;
+        --accent: #74b9ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at top right, rgba(116, 185, 255, 0.08), transparent 24%),
+          linear-gradient(180deg, #07111a 0%, #08131f 52%, #06111b 100%);
+        color: var(--text);
+        font-family: Manrope, system-ui, sans-serif;
+      }
+
+      main {
+        width: min(640px, 100%);
+        padding: 32px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--surface);
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      a {
+        display: inline-flex;
+        margin-top: 16px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 12px 16px;
+        background: var(--text);
+        color: #07111c;
+        font-weight: 700;
+        text-decoration: none;
+      }
     </style>
-</head>
-<body class="error-page">
-    <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
-    
-    <div class="error-content">
-        <div class="error-illustration">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                <circle cx="250" cy="250" r="200" fill="none" stroke="#e2e8f0" stroke-width="20"/>
-                <path d="M180,170 L320,310 M180,310 L320,170" stroke="#3b82f6" stroke-width="20" stroke-linecap="round"/>
-                <circle cx="250" cy="250" r="210" fill="none" stroke-dasharray="20,20" stroke="#8b5cf6" stroke-width="10"/>
-            </svg>
-        </div>
-        <div class="error-code">404</div>
-        <h1>Page Not Found</h1>
-        <p>The page you're looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-        <a href="index.html" class="button">Back to Homepage</a>
-    </div>
-    
-    <script>
-        // Dark Mode Toggle
-        const darkModeToggle = document.querySelector('.dark-mode-toggle');
-        
-        // Check for system preference and local storage
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const storedTheme = localStorage.getItem('theme');
-        
-        if (storedTheme === 'dark' || (!storedTheme && prefersDarkScheme)) {
-            document.documentElement.classList.add('dark-mode');
-            if (darkModeToggle) {
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-        }
-        
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', function() {
-                document.documentElement.classList.toggle('dark-mode');
-                
-                if (document.documentElement.classList.contains('dark-mode')) {
-                    localStorage.setItem('theme', 'dark');
-                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                }
-            });
-        }
-    </script>
-</body>
+  </head>
+  <body>
+    <main>
+      <p>404</p>
+      <h1>Page not found</h1>
+      <p>The requested page does not exist. Return to the homepage.</p>
+      <a href="./index.html">Back to site</a>
+    </main>
+  </body>
 </html>

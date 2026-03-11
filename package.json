@@ -7,23 +7,15 @@
     "predev": "node scripts/restore-source-index.mjs",
     "dev": "vite",
     "prebuild": "node scripts/restore-source-index.mjs",
-    "build": "vite build",
-    "build:pages": "npm run build && node scripts/sync-pages.mjs",
+    "build": "vite build && node scripts/sync-pages.mjs",
+    "build:pages": "npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "framer-motion": "^11.0.0",
-    "react-typed": "^2.0.12",
-    "react-intersection-observer": "^9.5.3",
-    "react-countup": "^6.5.0",
-    "react-parallax": "^3.5.1",
-    "react-chartjs-2": "^5.2.0",
-    "chart.js": "^4.4.1",
     "lucide-react": "^0.300.0",
-    "@emailjs/browser": "^3.11.0",
-    "react-hot-toast": "^2.4.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
