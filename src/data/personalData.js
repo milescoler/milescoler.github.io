@@ -1,5 +1,4 @@
 import embercastImage from '../assets/cole/embercast.jpg';
-import fieldImage from '../assets/cole/field.png';
 import headshotImage from '../assets/cole/headshot.png';
 import internalToolImage from '../assets/cole/internaltool.jpg';
 import lifestyleImage from '../assets/cole/lifestyle.png';
@@ -19,8 +18,8 @@ export const personalData = {
     eyebrow: 'Statistics and data science student building models, maps, and tools for outdoor real-world systems',
     title: 'I use data science to understand and act on environmental risk.',
     backgroundImage: {
-      src: fieldImage,
-      alt: 'Trident Ember Defense installation work in the field',
+      src: lifestyleImage,
+      alt: 'Cole Richards outdoors in California',
     },
     lede:
       'I am a UCLA Statistics & Data Science student graduating in June 2026, and I am most energized when I can model real systems, work with messy data, and turn analysis into something people can actually use.',
