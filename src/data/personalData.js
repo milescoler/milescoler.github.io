@@ -16,16 +16,16 @@ export const personalData = {
     { label: 'Contact', href: '#contact' },
   ],
   hero: {
-    eyebrow: 'Student founder working at the intersection of data, GIS, and field operations',
-    title: 'I build operational systems for real-world problems.',
+    eyebrow: 'Statistics and data science student building models, maps, and tools for outdoor real-world systems',
+    title: 'I use data science to understand and act on environmental risk.',
     backgroundImage: {
       src: fieldImage,
       alt: 'Trident Ember Defense installation work in the field',
     },
     lede:
-      'I am a UCLA Statistics & Data Science student graduating in June 2026, and I spend most of my time building tools, mapping risk, and making complex work more usable.',
+      'I am a UCLA Statistics & Data Science student graduating in June 2026, and I am most energized when I can model real systems, work with messy data, and turn analysis into something people can actually use.',
     body:
-      'Right now that means wildfire resilience, GIS analysis, startup operations, and hands-on execution through Trident Ember Defense. I care about work that improves how people live and helps protect the places we depend on.',
+      'That work keeps pulling me toward the outdoors: weather, ocean conditions, wildfire risk, and the operational decisions that sit on top of them. Through Trident Ember Defense and my coursework, I keep building the bridge between quantitative modeling, geospatial analysis, and field execution.',
   },
   profile: {
     intro:
@@ -39,15 +39,15 @@ export const personalData = {
       note: 'UCLA Statistics & Data Science student, founder, and engineer.',
     },
     paragraphs: [
-      'I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base, but what really drives me is using technical skill in environments that are messy, physical, and high stakes.',
-      'At Trident Ember Defense, I have built the company’s CRM, quoting workflows, inventory tooling in Supabase, a 2D sprinkler-system mapping tool, and the public-facing website. I have also planned and run installations, designed systems, and used geospatial analysis to identify high-risk wildfire areas and the homes inside them.',
-      'I want my work to sit at the point where data, communication, and execution meet. I care about building tools that solve hard problems, but I also care about the people around me and the future of the planet we share.',
+      'I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base, but the part I care about most is applying statistics and data science to systems that are dynamic, physical, and hard to predict.',
+      'I like modeling whenever I can, especially when the problem is tied to outdoor conditions like weather, ocean behavior, or wildfire. I am drawn to datasets that change across space and time, and to the challenge of making those patterns useful through maps, forecasts, and decision tools.',
+      'At Trident Ember Defense, that has meant building internal software, doing wildfire risk targeting, creating planning tools, and working directly in the field. What I want long term is work that sits at the intersection of quantitative analysis, environmental application, and practical execution.',
     ],
     facts: [
       { label: 'Current role', value: 'Founder and COO, Trident Ember Defense' },
       { label: 'Degree', value: 'B.S. in Statistics & Data Science, UCLA' },
       { label: 'Expected graduation', value: 'June 2026' },
-      { label: 'Working style', value: 'Structured, visual, detail-driven' },
+      { label: 'Primary interest', value: 'Environmental modeling and applied data science' },
     ],
   },
   focusAreas: [
@@ -55,25 +55,25 @@ export const personalData = {
       icon: 'flame',
       title: 'Wildfire resilience',
       description:
-        'I want to keep building in climate-adjacent spaces where the work has immediate stakes and a visible effect on communities.',
+        'Wildfire is one of the clearest places where data, uncertainty, and real-world consequences meet, which is why I keep building here.',
     },
     {
       icon: 'map',
-      title: 'GIS and geospatial analysis',
+      title: 'Spatiotemporal modeling',
       description:
-        'I use mapping and geospatial tools to move from broad risk patterns to specific operational decisions and target areas.',
+        'I like working with data that changes across space and time, then turning it into maps, forecasts, and operational insight.',
     },
     {
       icon: 'tools',
-      title: 'Operational software',
+      title: 'Weather and ocean applications',
       description:
-        'I like building the internal systems that keep a team organized: quoting, inventory, CRM, admin tools, dashboards, and planning workflows.',
+        'I am especially interested in applying modeling to weather, surf and ocean conditions, and other outdoor systems people interact with directly.',
     },
     {
       icon: 'shield',
-      title: 'Field execution',
+      title: 'Operational software',
       description:
-        'I am comfortable in the physical side of the work too, leading installs, translating plans clearly, and solving problems under real constraints.',
+        'I like building the internal tools, dashboards, and workflows that turn analysis into something a team can actually run with.',
     },
   ],
   metrics: [
@@ -105,11 +105,11 @@ export const personalData = {
       period: '2024 - Present',
       location: 'Santa Monica / Los Angeles and Ventura Counties',
       summary:
-        'I co-founded Trident Ember Defense to help protect homes in wildfire-prone areas. My role spans software, GIS targeting, operations, installation planning, and client-facing execution.',
+        'I co-founded Trident Ember Defense to help protect homes in wildfire-prone areas. My role spans wildfire data analysis, GIS targeting, software, operations, installation planning, and client-facing execution.',
       highlights: [
         'Built the CRM, quoting tool, inventory system, 2D sprinkler-mapping software, and internal admin tooling from scratch.',
         'Designed dozens of exterior wildfire sprinkler systems and helped save hundreds of planning hours through better digital workflows.',
-        'Performed geospatial analysis to identify high-risk wildfire areas and support outreach to the homes that need protection most.',
+        'Performed geospatial analysis to identify high-risk wildfire areas and connect wildfire conditions to property-level targeting.',
         'Led a one-day installation on a 3,400-square-foot two-story home, coordinating an 8-person crew and translating weeks of planning into field execution.',
       ],
       tools: ['Supabase', 'Swift', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Mapbox', 'Netlify', 'GIS'],
@@ -121,7 +121,7 @@ export const personalData = {
       period: 'Aug 2024 - Dec 2025',
       location: 'UCLA',
       summary:
-        'I support technology operations across UCLA Housing and Hospitality and look for ways to make tracking and restocking more systematic.',
+        'I supported technology operations across UCLA Housing and Hospitality and looked for ways to make tracking, visibility, and restocking more systematic.',
       highlights: [
         'Managed inventory records for technology assets across housing and hospitality operations.',
         'Supported hardware intake, device setup, and database accuracy for campus technology systems.',
@@ -135,7 +135,7 @@ export const personalData = {
       period: 'Oct 2020 - Oct 2021',
       location: 'Santa Barbara',
       summary:
-        'This was where I first learned that automation can change how a team works day to day. I built faster Excel-based workflows and trained the team to use them.',
+        'This was where I first learned that structured analysis and automation can change how a team works day to day. I built faster Excel-based workflows and trained the team to use them.',
       highlights: [
         'Automated daily account extraction and feature analysis for thousands of records.',
         'Improved internal tracking and removed hours of repetitive manual work.',
@@ -151,9 +151,9 @@ export const personalData = {
       description:
         'I use geospatial analysis to find the neighborhoods and properties where wildfire protection work is most urgent, then connect that analysis to practical outreach and installation planning.',
       points: [
-        'Combines wildfire conditions, local risk patterns, and property-level targeting.',
+        'Combines wildfire conditions, local risk patterns, and property-level targeting in one spatial workflow.',
         'Supports Trident’s partner conversations and helps focus effort where it can matter most.',
-        'Represents the clearest bridge between my UCLA coursework and startup execution.',
+        'Represents the clearest bridge between my statistics coursework, geospatial analysis, and startup execution.',
       ],
       stack: ['ArcGIS', 'QGIS', 'R geospatial libraries', 'GIS workflows'],
       media: {
@@ -165,14 +165,14 @@ export const personalData = {
       },
     },
     {
-      category: 'Mobile + Forecasting',
+      category: 'Forecasting + Environmental Data',
       title: 'EmberCast',
       description:
         'A mobile app concept and working tool for viewing wildfire conditions through dashboard and map views, designed for homeowners and firefighters who need usable information quickly.',
       points: [
         'Displays hourly, weekly, and historical condition views from public data sources.',
         'Includes a live wind-particle map and risk preview for spatial awareness.',
-        'Pushes me toward the kind of GIS-informed product work I want to keep doing.',
+        'Reflects the kind of environmental modeling and forecast-driven product work I want to keep doing across wildfire, weather, and ocean applications.',
       ],
       stack: ['Swift', 'Public data APIs', 'Mapping interfaces', 'Forecast visualization'],
       media: {
@@ -211,8 +211,9 @@ export const personalData = {
       location: 'Los Angeles',
       notes: [
         'Graduating in June 2026.',
-        'Current emphasis on GIS, geospatial analysis, statistics, and applied data work.',
-        'Targeting roles in climate tech, GIS, wildfire resilience, data science, research, and consulting.',
+        'Current emphasis on statistics, GIS, geospatial analysis, and applied modeling.',
+        'Most interested in environmental data science across wildfire, weather, ocean, and climate-adjacent applications.',
+        'Targeting roles in climate tech, GIS, research, data science, and modeling-focused product work.',
       ],
     },
     {
@@ -229,7 +230,7 @@ export const personalData = {
   ],
   personal: {
     summary:
-      'Outside of school and startup work, I spend a lot of time surfing, hiking, playing volleyball, practicing yoga and meditation, playing guitar, and hanging out with my dog Toby. Being outside and staying active keeps me grounded and is a real part of how I live.',
+      'Outside of school and startup work, I spend a lot of time surfing, hiking, playing volleyball, practicing yoga and meditation, playing guitar, and hanging out with my dog Toby. Being outside is not separate from my technical interests. It is a big part of why I care about weather, ocean, wildfire, and other environmental systems in the first place.',
     featuredImage: {
       src: lifestyleImage,
       alt: 'Cole Richards lifestyle photo outdoors',
@@ -269,6 +270,6 @@ export const personalData = {
     githubUrl: 'https://github.com/milescoler',
     resumeUrl: '/Cole-Richards-Resume.pdf',
     statement:
-      'I am looking for a place where I can have a strong impact on the well-being of other people or on the future of our planet, ideally while staying close to outdoor, real-world work.',
+      'I am looking for work where I can keep growing as a statistician and data scientist while building models and tools tied to the real world, especially in environmental, outdoor, and climate-adjacent settings.',
   },
 };
