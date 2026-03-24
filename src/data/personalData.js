@@ -15,16 +15,16 @@ export const personalData = {
     { label: 'Contact', href: '#contact' },
   ],
   hero: {
-    eyebrow: 'Statistics and data science student building models, maps, and tools for outdoor real-world systems',
-    title: 'I use data science to understand and act on environmental risk.',
+    eyebrow: 'UCLA Statistics & Data Science · Graduating June 2026',
+    title: 'I build models, maps, and tools for systems that don\'t stay still.',
     backgroundImage: {
       src: lifestyleImage,
       alt: 'Cole Richards outdoors in California',
     },
     lede:
-      'I am a UCLA Statistics & Data Science student graduating in June 2026, and I am most energized when I can model real systems, work with messy data, and turn analysis into something people can actually use.',
+      'And I work in the field to make sure the analysis actually holds.',
     body:
-      'That work keeps pulling me toward the outdoors: weather, ocean conditions, wildfire risk, and the operational decisions that sit on top of them. Through Trident Ember Defense and my coursework, I keep building the bridge between quantitative modeling, geospatial analysis, and field execution.',
+      'Through Trident Ember Defense and my coursework, I keep building the bridge between quantitative modeling, geospatial analysis, and field execution — across wildfire, weather, ocean conditions, and the operational decisions that sit on top of them.',
   },
   profile: {
     intro:
@@ -33,7 +33,7 @@ export const personalData = {
       src: headshotImage,
       alt: 'Cole Richards headshot',
       variant: 'headshot',
-      tag: 'Headshot',
+      tag: '',
       label: 'Cole Richards',
       note: 'UCLA Statistics & Data Science student, founder, and engineer.',
     },

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -7,6 +8,8 @@ import {
   Linkedin,
   Mail,
   MapPinned,
+  Menu,
+  X,
 } from 'lucide-react';
 import { personalData } from './data/personalData';
 
@@ -19,6 +22,7 @@ const sectionReveal = {
 
 function App() {
   const { name, navigation, hero, profile, work, projects, education, personal, contact } = personalData;
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="page">
@@ -28,17 +32,28 @@ function App() {
             {name}
           </a>
 
-          <nav className="nav">
+          <nav className={`nav${menuOpen ? ' nav--open' : ''}`}>
             {navigation.map((item) => (
-              <a key={item.href} href={item.href}>
+              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
                 {item.label}
               </a>
             ))}
+            <a className="button button--ghost nav__resume" href={contact.resumeUrl} download>
+              Resume
+            </a>
           </nav>
 
-          <a className="button button--ghost" href={contact.resumeUrl} download>
+          <a className="button button--ghost header__resume" href={contact.resumeUrl} download>
             Resume
           </a>
+
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </header>
 
@@ -74,7 +89,6 @@ function App() {
 
             <div className="hero__meta">
               <MetaItem icon={<MapPinned size={16} />} label="Based in" value="Santa Monica / Los Angeles" />
-              <MetaItem icon={<GraduationCap size={16} />} label="Graduating" value="UCLA, June 2026" />
             </div>
           </div>
         </motion.section>
@@ -293,7 +307,7 @@ function MediaCard({ item, className }) {
         </div>
       ) : (
         <div className="media-card__content">
-          <span className="card__label">{item.tag}</span>
+          {item.tag ? <span className="card__label">{item.tag}</span> : null}
           <h3>{item.label}</h3>
           <p>{item.note}</p>
         </div>
