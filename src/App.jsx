@@ -7,7 +7,6 @@ import {
   GraduationCap,
   Linkedin,
   Mail,
-  MapPinned,
   Menu,
   X,
 } from 'lucide-react';
@@ -23,6 +22,11 @@ const sectionReveal = {
 function App() {
   const { name, navigation, hero, profile, work, projects, education, personal, contact } = personalData;
   const [menuOpen, setMenuOpen] = useState(false);
+  const heroHighlights = [
+    { label: 'Current role', value: profile.facts[0]?.value ?? 'Founder and COO, Trident Ember Defense' },
+    { label: 'Based in', value: 'Santa Monica / Los Angeles' },
+    { label: 'Graduating', value: 'June 2026' },
+  ];
 
   return (
     <div className="page">
@@ -63,32 +67,67 @@ function App() {
           {...sectionReveal}
         >
           <div className="hero__overlay">
-            <p className="eyebrow">{hero.eyebrow}</p>
-            <h1>{hero.title}</h1>
-            <p className="hero__lede">{hero.lede}</p>
-            <p className="hero__body">{hero.body}</p>
+            <div className="hero__grid">
+              <div className="hero__content">
+                <p className="eyebrow">{hero.eyebrow}</p>
+                <h1>{hero.title}</h1>
+                <p className="hero__lede">{hero.lede}</p>
+                <p className="hero__body">{hero.body}</p>
 
-            <div className="actions">
-              <a className="button" href={`mailto:${contact.primaryEmail}`}>
-                <Mail size={16} />
-                Email
-              </a>
-              <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-                <Linkedin size={16} />
-                LinkedIn
-              </a>
-              <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
-                <Github size={16} />
-                GitHub
-              </a>
-              <a className="button button--ghost" href={contact.resumeUrl} download>
-                <Download size={16} />
-                Download resume
-              </a>
-            </div>
+                <div className="actions">
+                  <a className="button" href={`mailto:${contact.primaryEmail}`}>
+                    <Mail size={16} />
+                    Email
+                  </a>
+                  <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+                    <Linkedin size={16} />
+                    LinkedIn
+                  </a>
+                  <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
+                    <Github size={16} />
+                    GitHub
+                  </a>
+                  <a className="button button--ghost" href={contact.resumeUrl} download>
+                    <Download size={16} />
+                    Download resume
+                  </a>
+                </div>
+              </div>
 
-            <div className="hero__meta">
-              <MetaItem icon={<MapPinned size={16} />} label="Based in" value="Santa Monica / Los Angeles" />
+              <aside className="hero__aside">
+                <div className="hero__feature">
+                  <img
+                    className="hero__feature-image"
+                    src={hero.backgroundImage.src}
+                    alt={hero.backgroundImage.alt}
+                  />
+
+                  <div className="hero__feature-body">
+                    <p className="card__label">What drives me</p>
+                    <p className="hero__feature-title">
+                      The outdoors, sports, music, and work with a clear human purpose.
+                    </p>
+                    <p className="hero__feature-copy">
+                      The recent work has been in wildfire, mapping, and field operations. The longer thread is doing practical work that helps people.
+                    </p>
+
+                    <div className="hero__details">
+                      {heroHighlights.map((item) => (
+                        <div key={item.label} className="hero__detail">
+                          <span>{item.label}</span>
+                          <strong>{item.value}</strong>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="tags hero__tags">
+                      {personal.interests.map((interest) => (
+                        <span key={interest.title}>{interest.title}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
         </motion.section>
