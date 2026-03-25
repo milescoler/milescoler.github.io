@@ -155,7 +155,7 @@ function App() {
         </motion.section>
 
         <motion.section id="projects" className="section" {...sectionReveal}>
-          <SectionHeading title="Projects" subtitle="Tools and systems I want to lead with." />
+          <SectionHeading title="Projects" subtitle="Examples of how I turn ideas into tools, systems, and execution." />
 
           <div className="project-list">
             {projects.map((project) => (
@@ -211,7 +211,7 @@ function App() {
         </motion.section>
 
         <motion.section id="life" className="section" {...sectionReveal}>
-          <SectionHeading title="Outside work" subtitle="The human part of the story matters too." />
+          <SectionHeading title="Outside work" subtitle="This is where a lot of the mission really comes from." />
 
           <div className="split">
             <MediaCard item={personal.featuredImage} className="card card--image" />
