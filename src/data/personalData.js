@@ -16,7 +16,7 @@ export const personalData = {
   ],
   hero: {
     eyebrow: 'UCLA Statistics & Data Science · Graduating June 2026',
-    title: 'I want to build useful things and do work that matters.',
+    title: 'I want to help people and leave the world better than I found it.',
     backgroundImage: {
       src: lifestyleImage,
       alt: 'Cole Richards outdoors in California',
