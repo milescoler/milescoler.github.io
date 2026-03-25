@@ -16,15 +16,15 @@ export const personalData = {
   ],
   hero: {
     eyebrow: 'UCLA Statistics & Data Science · Graduating June 2026',
-    title: 'I want to build work that moves people and makes the world better.',
+    title: 'I want to build useful things and do work that matters.',
     backgroundImage: {
       src: lifestyleImage,
       alt: 'Cole Richards outdoors in California',
     },
     lede:
-      'The recent work happens to be in wildfire, mapping, and field operations. The deeper motivation is bigger than any one domain.',
+      'A lot of my recent work has been in wildfire, mapping, and field operations, but that is not the full story.',
     body:
-      'I care most about the outdoors, the people I share it with, and building things that inspire positive change. Surfing, volleyball, soccer, music, and time outside shape how I think. What I want long term is to build useful systems, strong teams, and real-world products that help create a more beautiful future for our families and for the world we leave behind.',
+      'What matters most to me is building useful systems, working with good people, and contributing to something that has a positive effect in the real world. The outdoors, sports, music, and time outside shape a lot of how I think about that.',
   },
   profile: {
     intro:
@@ -39,8 +39,8 @@ export const personalData = {
     },
     paragraphs: [
       'I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base, but the part I care about most is building things that matter in real life, not just in theory.',
-      'A lot of my recent work has been in wildfire, mapping, weather, and other outdoor systems. That is part of the story, but it is not the whole story. What drives me most is a love for the outdoors, sports, music, and the kind of work that brings energy, beauty, and meaning into people’s lives.',
-      'At Trident Ember Defense, that has meant building software, planning systems, and field operations that protect what matters. Long term, I want to keep growing as a builder and operator whose work inspires people, creates positive change, and helps shape a better future for our communities and families.',
+      'A lot of my recent work has been in wildfire, mapping, weather, and other outdoor systems. That is part of the story, but it is not the whole story. What drives me most is a connection to the outdoors, sports, music, and work that has a clear human purpose.',
+      'At Trident Ember Defense, that has meant building software, planning systems, and field operations that protect what matters. Long term, I want to keep growing as a builder and operator doing practical work that is useful, responsible, and worth spending time on.',
     ],
     facts: [
       { label: 'Current role', value: 'Founder and COO, Trident Ember Defense' },
@@ -54,7 +54,7 @@ export const personalData = {
       icon: 'flame',
       title: 'Real-world impact',
       description:
-        'I want to build work that improves people’s lives in tangible ways and pushes others to create positive change too.',
+        'I am most motivated by work that is useful to people and holds up outside of a slide deck.',
     },
     {
       icon: 'map',
@@ -66,7 +66,7 @@ export const personalData = {
       icon: 'tools',
       title: 'Outdoors and sport',
       description:
-        'The outdoors, surfing, volleyball, soccer, and music are not side interests for me. They shape the kind of products, communities, and energy I want to build around.',
+        'The outdoors, surfing, volleyball, soccer, and music are a real part of how I think about the kind of life and work I want.',
     },
     {
       icon: 'shield',
@@ -171,7 +171,7 @@ export const personalData = {
       points: [
         'Displays hourly, weekly, and historical condition views from public data sources.',
         'Includes a live wind-particle map and risk preview for spatial awareness.',
-        'Reflects my interest in building products that translate complexity into something useful, intuitive, and motivating for real people.',
+        'Reflects my interest in building products that translate complexity into something clear and useful for real people.',
       ],
       stack: ['Swift', 'Public data APIs', 'Mapping interfaces', 'Forecast visualization'],
       media: {
@@ -212,7 +212,7 @@ export const personalData = {
         'Graduating in June 2026.',
         'Current emphasis on statistics, applied modeling, and building systems that hold up in the real world.',
         'Most interested in mission-driven product, operations, and data work with a strong human component.',
-        'Targeting roles where I can help build tools, teams, and experiences that create meaningful positive change.',
+        'Targeting roles where I can help build tools and systems that are genuinely useful.',
       ],
     },
     {
@@ -229,14 +229,14 @@ export const personalData = {
   ],
   personal: {
     summary:
-      'Outside of school and startup work, I spend a lot of time surfing, playing volleyball and soccer, playing guitar, practicing yoga and meditation, and hanging out with my dog Toby. That part of my life is not separate from my ambition. It is where a lot of it comes from. I want to build a life and a body of work that helps people feel more connected, more inspired, and more invested in making the world better.',
+      'Outside of school and startup work, I spend a lot of time surfing, playing volleyball and soccer, playing guitar, practicing yoga and meditation, and hanging out with my dog Toby. That part of my life is not separate from my ambition. It has a lot to do with the kind of work I want to do and the kind of person I want to be.',
     featuredImage: {
       src: lifestyleImage,
       alt: 'Cole Richards lifestyle photo outdoors',
       variant: 'portrait',
       tag: 'Outside work',
       label: 'A life that stays close to the outdoors',
-      note: 'The kind of future I want to help build starts with how I choose to live now.',
+      note: 'How I live has a lot to do with the kind of work I want to keep doing.',
     },
     interests: [
       { icon: 'wave', title: 'Surfing', detail: 'A real part of how I reset and think.' },
@@ -269,6 +269,6 @@ export const personalData = {
     githubUrl: 'https://github.com/milescoler',
     resumeUrl: '/Cole-Richards-Resume.pdf',
     statement:
-      'I am looking for work where I can keep growing as a builder, operator, and data scientist while helping create a world that is healthier, more inspiring, and more worth inheriting.',
+      'I am looking for work where I can keep growing as a builder, operator, and data scientist while contributing to something thoughtful, useful, and grounded in the real world.',
   },
 };

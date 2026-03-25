@@ -211,7 +211,7 @@ function App() {
         </motion.section>
 
         <motion.section id="life" className="section" {...sectionReveal}>
-          <SectionHeading title="Outside work" subtitle="This is where a lot of the mission really comes from." />
+          <SectionHeading title="Outside work" subtitle="This part of my life shapes the kind of work I want to do." />
 
           <div className="split">
             <MediaCard item={personal.featuredImage} className="card card--image" />
