@@ -98,19 +98,11 @@ function App() {
                 <div className="hero__feature">
                   <img
                     className="hero__feature-image"
-                    src={hero.backgroundImage.src}
-                    alt={hero.backgroundImage.alt}
+                    src={profile.headshot.src}
+                    alt={profile.headshot.alt}
                   />
 
                   <div className="hero__feature-body">
-                    <p className="card__label">What drives me</p>
-                    <p className="hero__feature-title">
-                      The outdoors, sports, music, and work with a clear human purpose.
-                    </p>
-                    <p className="hero__feature-copy">
-                      The recent work has been in wildfire, mapping, and field operations. The longer thread is doing practical work that helps people.
-                    </p>
-
                     <div className="hero__details">
                       {heroHighlights.map((item) => (
                         <div key={item.label} className="hero__detail">
