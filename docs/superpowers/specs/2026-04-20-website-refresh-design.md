@@ -39,6 +39,29 @@ hero: {
 
 The old "I want to help people and leave the world better than I found it" block from the brief is superseded. Both the `lede` and `body` are the new copy — no leftover paragraphs from the old version.
 
+**Accent-gradient render strategy:** The `<h1>` renders `hero.title` by splitting on `hero.titleAccent`:
+
+```jsx
+function renderTitle(title, accent) {
+  if (!accent || !title.includes(accent)) {
+    if (import.meta.env.DEV && accent) {
+      console.warn(`hero.titleAccent "${accent}" not found in hero.title`);
+    }
+    return title;
+  }
+  const [before, after] = title.split(accent);
+  return (
+    <>
+      {before}
+      <span className="accent-gradient">{accent}</span>
+      {after}
+    </>
+  );
+}
+```
+
+If `titleAccent` is absent or doesn't match a substring of `title`, the fallback renders the full title with no accent and a dev-only warning. Exactly one occurrence is expected; if the accent phrase appears more than once, only the first split is highlighted.
+
 ### 3.2 Availability block (NEW) — `availability`
 
 New top-level field on `personalData`:
@@ -79,6 +102,8 @@ with:
 
 Other three rows (`Current role`, `Degree`, `Expected graduation`) unchanged.
 
+The meta row in §4.3 renders `profile.facts` as-is (4 rows). Location is intentionally not in `profile.facts` — it lives in the availability strip (§3.2). Do not add a new location fact; keep `profile.facts.length === 4`.
+
 ### 3.5 Work — Trident Ember Defense period
 
 In `work[0]`:
@@ -88,7 +113,7 @@ In `work[0]`:
 + period: 'Aug 2025 – Present',
 ```
 
-(Matches the resume. Uses an en-dash and abbreviated month.)
+(Matches the resume. Uses an en-dash and abbreviated month. This is the only place the Trident date renders in the current `App.jsx` — the hero reads `profile.facts[0].value` for "Current role," not the work period — so this single change is sufficient.)
 
 ### 3.6 Contact statement — `contact.statement`
 
@@ -99,12 +124,16 @@ statement:
 
 ### 3.7 Resume asset swap
 
-- Replace `public/Cole-Richards-Resume.pdf` with a new file named **`Cole_Richards_Resume.pdf`** (underscores per the brief).
-- Update `contact.resumeUrl` from `'/Cole-Richards-Resume.pdf'` to `'/Cole_Richards_Resume.pdf'`.
-- Delete the old file.
-- Verify the download links in the header, hero, and contact section all serve the new file after build.
+Canonical source: the newer PDF in the repo root (`/Cole-Richards-Resume.pdf`, 153 KB as of 2026-03-25, last update commit `8c3b5d6`). The older, larger copy under `public/` (225 KB) is stale and pre-dates the most recent resume update. Both files must be replaced to stay consistent.
 
-> **Note:** The actual new PDF file must be provided by the user or dropped into `public/` out-of-band. The implementation task will confirm it exists before updating the path; if it is missing, the implementation will surface a clear instruction rather than renaming the existing file.
+- Accept a new PDF file named **`Cole_Richards_Resume.pdf`** (underscores per the brief) at the repo root, provided by the user out-of-band.
+- Copy that file into `public/Cole_Richards_Resume.pdf` so Vite serves it at `/Cole_Richards_Resume.pdf`.
+- Update `contact.resumeUrl` from `'/Cole-Richards-Resume.pdf'` to `'/Cole_Richards_Resume.pdf'`.
+- Delete both old files: `public/Cole-Richards-Resume.pdf` and root-level `Cole-Richards-Resume.pdf`.
+- Verify the download links in the header, hero, and contact section all serve the new file after build.
+- Verify the file at the repo root and the file under `public/` have identical contents (`diff` or `md5` check) so the two copies don't diverge again.
+
+> **Note:** If the new PDF file has not yet been dropped into the repo root, the implementation task will not rename anything — it will surface a clear instruction to the user to place the file first, then proceed.
 
 ### 3.8 Metadata / head tags
 
@@ -153,7 +182,7 @@ Single dark theme. Sans-serif throughout. No serifs. No light-mode variant.
 - Meta row (below availability strip): `grid-template-columns: 260px 1fr` — portrait on the left, 4-row `key / value` fact list on the right with hairline dividers.
 - All sections separated by a 1px `--surface-border` top rule. Section vertical padding 80px desktop / 48px mobile.
 - Work list: role + `company · location` (company in cyan) + summary + bullets + right-pinned date in tabular numerals. 28px vertical padding per item, hairline divider.
-- Projects: alternating 2-column `1fr 1fr` with image placeholder card and body. First image on the left, second on the right (visual rhythm). 8/8 gap behavior is 40px gap.
+- Projects: 2-column `1fr 1fr` with image and body at a 40px gap. Alternating side is implemented with CSS only — `.project-list .project:nth-child(even) { direction: rtl; }` plus `.project-list .project:nth-child(even) > * { direction: ltr; }` so the visual order flips without changing DOM order. App.jsx renders each project identically; no per-item logic. On mobile the stacking is handled separately in §6.
 - Contact: large heading + positioning paragraph + single bordered panel with 4 `key / value` rows.
 
 ### 4.4 Navigation
@@ -183,24 +212,40 @@ None of the current gif/animated backgrounds are altered. Existing project gif (
 All concrete edits, by path:
 
 1. **[src/data/personalData.js](src/data/personalData.js)** — update `hero`, `profile.paragraphs`, `profile.facts[3]`, `work[0].period`, `contact.statement`, `contact.resumeUrl`. Add new top-level `availability` array. Add `hero.titleAccent`.
-2. **[src/App.jsx](src/App.jsx)** — Re-order hero subtree:
+2. **[src/App.jsx](src/App.jsx)** — Re-order hero subtree and clean up dead code:
    - Remove `hero--image`, `hero__overlay`, `hero__grid`, `hero__aside`, and the `hero__feature` headshot card inside the hero.
+   - Delete the inline `heroHighlights` array (currently lines 25–29) — it's no longer needed once the facts panel lives in the meta row.
+   - Delete the unused `MetaItem` component (currently lines 319–329) — it is declared but never used and its CSS (`.meta-item`, `.meta-item__icon`) is removed in step 3.
    - Hero becomes a single-column block: eyebrow → h1 (with gradient accent span) → lede → body → actions → availability strip.
    - New `AvailabilityStrip` component (inline or small file) renders `personalData.availability` as a 3-column bordered strip.
    - New `MetaRow` subtree below the hero: `profile.headshot` image on the left, `profile.facts` rendered as a key/value list on the right. Replaces the hero-aside feature card.
    - Add small cyan `dot` span prefix to each uppercase eyebrow / seclabel.
-   - Wrap `hero.titleAccent` substring in an `<span class="accent-gradient">`. The render logic splits `hero.title` on `hero.titleAccent` so the accent is data-driven.
+   - Wrap `hero.titleAccent` substring in an `<span class="accent-gradient">` using the split-and-render strategy in §3.1.
 3. **[src/index.css](src/index.css)** — full visual refactor:
    - Replace Manrope `@import` with Inter.
    - Replace `:root` color variables with the palette in §4.1.
    - Replace the grid-lines radial-gradient body background with solid `var(--bg)`.
    - Rewrite hero, section, work, project, meta, availability, contact, nav, and button selectors to match §4.2–§4.5.
-   - Remove `hero__feature*`, `hero__aside`, `hero__grid`, `hero--image` rules (no longer used).
-   - Add new rules for `.availability`, `.meta`, `.meta__facts`, `.accent-gradient`, `.seclabel`, `.seclabel__dot`, `.work-item`, `.contact-panel` (updating the existing version).
-   - Media queries: collapse 3-col availability to 1-col at ≤760px; collapse meta row to single column at ≤760px.
-4. **[index.src.html](index.src.html)** — update `<title>`, `<meta description>`, `<meta keywords>` per §3.8. Also update the color-scheme / theme color if present.
-5. **public/** — add `Cole_Richards_Resume.pdf` (new file), delete old `Cole-Richards-Resume.pdf`.
-6. **Root Cole-Richards-Resume.pdf** — the copy in the repo root is a separate committed asset (not served). Replace it with `Cole_Richards_Resume.pdf` so the repo is consistent; remove the old-named file.
+   - Remove all unused hero rules: `.hero--image`, `.hero__overlay`, `.hero__grid`, `.hero__content`, `.hero__aside`, `.hero__feature`, `.hero__feature-image`, `.hero__feature-body`, `.hero__details`, `.hero__detail`, `.hero__tags`.
+   - Remove `.meta-item` and `.meta-item__icon` rules (the component that used them is deleted in step 2). New rules in this spec use class names `.meta-row`, `.meta-row__facts`, `.meta-row__fact` to avoid any collision with the removed `.meta-item` namespace.
+   - Add new rules for `.availability`, `.meta-row`, `.meta-row__facts`, `.meta-row__fact`, `.accent-gradient`, `.seclabel`, `.seclabel__dot`, `.work-item`, `.contact-panel` (updating the existing version).
+   - Add `:nth-child(even)` rule on `.project-list .project` per §4.3.
+   - Media queries: collapse 3-col availability to 1-col at ≤760px; collapse meta row to single column at ≤760px; cancel the `direction: rtl` flip on projects at ≤760px.
+4. **[index.src.html](index.src.html)** — update `<title>`, `<meta description>`, `<meta keywords>` per §3.8. The current file has no `theme-color` or `color-scheme` meta — do not add them (out of scope for a copy/metadata refresh).
+5. **public/** — add `Cole_Richards_Resume.pdf` (copied from the repo root), delete old `Cole-Richards-Resume.pdf`.
+6. **Root `Cole_Richards_Resume.pdf`** — canonical source, provided by user. Old root-level `Cole-Richards-Resume.pdf` is deleted after the copy to `public/`.
+
+### 5.1 Dead code in `personalData.js`
+
+The following fields currently exist in `src/data/personalData.js` but are **never read** by `App.jsx`:
+
+- `profile.intro`
+- `personal.mediaPlaceholders`
+- Top-level `focusAreas` (4 items)
+- Top-level `metrics` (4 items)
+- `personal.interests[*].detail` and `personal.interests[*].icon` (only `title` is rendered)
+
+Delete these fields as part of this change. Rationale: they are orphaned copy from an earlier design, contain stale positioning, and the verification step (§7) already checks that no old copy remains. Leaving them creates a risk of re-introduction. After deletion, `personalData.js` should export only the fields actually rendered: `name`, `navigation`, `hero`, `availability`, `profile`, `work`, `projects`, `education`, `personal` (with `summary`, `featuredImage`, and `interests` reduced to `[{ title }]`), and `contact`.
 
 No other files are touched.
 
@@ -223,18 +268,22 @@ All of these must pass after implementation, before committing:
 - [ ] Homepage loads in the dev server without layout breakage.
 - [ ] All six nav links scroll to the correct sections.
 - [ ] Headshot renders in the meta row (not in the hero aside).
-- [ ] Availability strip renders with all three rows, correct label + value.
+- [ ] Availability strip renders with all three rows, correct label + value. `personalData.availability.length === 3`.
+- [ ] `profile.facts.length === 4` (Current role, Degree, Expected graduation, Primary interest).
 - [ ] The three external links (LinkedIn, GitHub, Email) open correctly.
 - [ ] "Download resume" button in header, hero, and contact section all point to `/Cole_Richards_Resume.pdf` and serve the new file (200, `application/pdf`).
-- [ ] `work[0].period` renders as "Aug 2025 – Present" everywhere (hero tags and work section are both consistent).
-- [ ] No orphaned text from the old copy remains anywhere in the rendered DOM (grep the old strings listed in §3 over `src/` and confirm zero matches after edits).
+- [ ] Resume PDF at the repo root and under `public/` have identical content (`diff` / checksum match).
+- [ ] `work[0].period` renders as "Aug 2025 – Present" in the Work section.
+- [ ] No orphaned text from the old copy remains anywhere in the rendered DOM. Grep over `src/` for each of: "I want to help people", "that is not the full story", "Mission-driven systems", "outdoors, sports, music", "builder and operator", "weather, and other outdoor systems" → zero matches.
+- [ ] No dead fields in `personalData.js` — `focusAreas`, `metrics`, `profile.intro`, `personal.mediaPlaceholders` are removed.
 - [ ] Accent gradient renders on the exact phrase "in real conditions" — not on the whole headline, not on any other text.
 - [ ] Inter font loads (no Manrope fallback visible).
-- [ ] Dark palette applies consistently; no remnants of `#08111b` / `#74b9ff` are in the rendered styles.
+- [ ] Dark palette applies consistently; grep rendered CSS and `src/index.css` for `#08111b`, `#0d1724`, `#1a2838`, `#74b9ff`, `#edf2f7`, `#96a5b8` → zero matches.
 - [ ] Resume metadata (title/description/keywords) in `index.src.html` updated.
+- [ ] Project rows alternate sides at ≥761px, stack at ≤760px.
 - [ ] Mobile breakpoints behave as described in §6.
 - [ ] `npm run build` completes; `dist/` is updated and the built `index.html` references the new hashed JS/CSS bundles.
-- [ ] `scripts/sync-pages.mjs` runs cleanly as part of build.
+- [ ] `scripts/sync-pages.mjs` runs cleanly as part of build. (Per `package.json`, it runs automatically after `vite build` — success is implicit in the build exit code.)
 
 ## 8. Out of scope (explicit)
 
@@ -248,7 +297,7 @@ All of these must pass after implementation, before committing:
 ## 9. Risks & rollback
 
 - **Risk:** The resume filename rename could leave a dead link if an external site or resume submission deep-links the old URL. Mitigation: the old resume URL (`/Cole-Richards-Resume.pdf`) had no public broadcast we're aware of; if needed, a trivial server-level redirect could be added later (out of scope for this change).
-- **Risk:** The hero-accent gradient is split by substring match — if `hero.title` does not contain `hero.titleAccent` verbatim, the fallback should render the full title with no accent and log a console warning in dev. Implementation must include this guard.
+- **Risk:** The hero-accent gradient is split by substring match — the fallback and warning behavior are specified in §3.1.
 - **Rollback:** Since all changes are on a single branch before publish, the rollback is `git revert` on the feature commit(s). No data migrations.
 
 ## 10. Delivery
