@@ -16,19 +16,23 @@ export const personalData = {
   ],
   hero: {
     eyebrow: 'UCLA Statistics & Data Science · Graduating June 2026',
-    title: 'I want to help people and leave the world better than I found it.',
+    title: 'Data work that holds up in real conditions.',
+    titleAccent: 'in real conditions',
     backgroundImage: {
       src: lifestyleImage,
       alt: 'Cole Richards outdoors in California',
     },
     lede:
-      'A lot of my recent work has been in wildfire, mapping, and field operations, but that is not the full story.',
+      'Weather, fire, human behavior, physical systems. Recent work: a wildfire startup I co-founded in Southern California, geospatial modeling, and full-stack operations software.',
     body:
-      'What matters most to me is building useful systems, working with good people, and contributing to something that has a positive effect in the real world. The outdoors, sports, music, and time outside shape a lot of how I think about that.',
+      'Looking for entry-level data analyst and data science roles starting June 2026, with part-time availability now.',
   },
+  availability: [
+    { label: 'Availability', value: 'Part-time now (10–20 hrs/week) · Full-time from June 12, 2026' },
+    { label: 'Location',     value: 'Santa Monica through summer · San Diego from August · Open to remote' },
+    { label: 'Target roles', value: 'Data Analyst · Data Scientist · Product Analyst' },
+  ],
   profile: {
-    intro:
-      'The site should frame me as technical, grounded, and capable of turning ideas into operating systems, not just prototypes.',
     headshot: {
       src: headshotImage,
       alt: 'Cole Richards headshot',
@@ -38,70 +42,22 @@ export const personalData = {
       note: 'UCLA Statistics & Data Science student, founder, and engineer.',
     },
     paragraphs: [
-      'I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base, but the part I care about most is building things that matter in real life, not just in theory.',
-      'A lot of my recent work has been in wildfire, mapping, weather, and other outdoor systems. That is part of the story, but it is not the whole story. What drives me most is a connection to the outdoors, sports, music, and work that has a clear human purpose.',
-      'At Trident Ember Defense, that has meant building software, planning systems, and field operations that protect what matters. Long term, I want to keep growing as a builder and operator doing practical work that is useful, responsible, and worth spending time on.',
+      "I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base — statistics, geospatial modeling, programming — but what I care about most is building things that matter in real life, not just in theory.",
+      "A lot of my recent work has been in wildfire, mapping, and operations at a startup I co-founded. The throughline across all of it is the same: using data and software to understand real-world systems and help people make better decisions. I'm most interested in work on health, human behavior, and the physical world — domains where modeling connects to outcomes that actually matter.",
+      "At Trident Ember Defense, that has meant building software, planning systems, and field operations that protect homes in high-risk areas. Long term, I want to keep growing as a data scientist and builder, doing practical work that's useful, grounded, and worth spending time on.",
     ],
     facts: [
       { label: 'Current role', value: 'Founder and COO, Trident Ember Defense' },
       { label: 'Degree', value: 'B.S. in Statistics & Data Science, UCLA' },
       { label: 'Expected graduation', value: 'June 2026' },
-      { label: 'Primary interest', value: 'Mission-driven systems, products, and applied data science' },
+      { label: 'Primary interest', value: 'Health, behavior, and physical-world data science' },
     ],
   },
-  focusAreas: [
-    {
-      icon: 'flame',
-      title: 'Real-world impact',
-      description:
-        'I am most motivated by work that is useful to people and holds up outside of a slide deck.',
-    },
-    {
-      icon: 'map',
-      title: 'Dynamic systems',
-      description:
-        'I am drawn to systems that are physical, fast-moving, and difficult to predict, especially when better decisions matter.',
-    },
-    {
-      icon: 'tools',
-      title: 'Outdoors and sport',
-      description:
-        'The outdoors, surfing, volleyball, soccer, and music are a real part of how I think about the kind of life and work I want.',
-    },
-    {
-      icon: 'shield',
-      title: 'Operational execution',
-      description:
-        'I like building the tools, systems, and workflows that help a team move from ideas into action.',
-    },
-  ],
-  metrics: [
-    {
-      value: '10+',
-      label: 'Internal tools deployed',
-      detail: 'Built for operations, quoting, mapping, inventory, and admin workflows.',
-    },
-    {
-      value: 'Hundreds',
-      label: 'Hours of planning saved',
-      detail: 'Cut down hand-drawn mapping and repetitive business-admin work.',
-    },
-    {
-      value: '8-person',
-      label: 'Crew led in the field',
-      detail: 'Coordinated installers and communicated plans on active job sites.',
-    },
-    {
-      value: '3 properties',
-      label: 'Completed installs so far',
-      detail: 'With site visits on 10 properties and dozens of system designs underway.',
-    },
-  ],
   work: [
     {
       role: 'Founder and COO',
       company: 'Trident Ember Defense',
-      period: '2024 - Present',
+      period: 'Aug 2025 – Present',
       location: 'Santa Monica / Los Angeles and Ventura Counties',
       summary:
         'I co-founded Trident Ember Defense to help protect homes in wildfire-prone areas. My role spans software, operations, targeting, installation planning, and client-facing field execution.',
@@ -239,27 +195,10 @@ export const personalData = {
       note: 'How I live has a lot to do with the kind of work I want to keep doing.',
     },
     interests: [
-      { icon: 'wave', title: 'Surfing', detail: 'A real part of how I reset and think.' },
-      { icon: 'mountain', title: 'Outdoors', detail: 'Ocean time, hiking, and staying close to California landscapes.' },
-      { icon: 'grid', title: 'Sports', detail: 'Volleyball, soccer, and the energy of team environments.' },
-      { icon: 'school', title: 'Music and practice', detail: 'Guitar, yoga, meditation, and a 2022 ashram work-study in Hawaii.' },
-    ],
-    mediaPlaceholders: [
-      {
-        tag: 'Placeholder',
-        label: 'Surf or beach image',
-        note: 'Use a candid image that feels personal, not staged.',
-      },
-      {
-        tag: 'Placeholder',
-        label: 'Volleyball or UCLA life',
-        note: 'Coach/player energy belongs here.',
-      },
-      {
-        tag: 'Placeholder',
-        label: 'Toby or hiking photo',
-        note: 'This helps keep the site human and memorable.',
-      },
+      { title: 'Surfing' },
+      { title: 'Outdoors' },
+      { title: 'Sports' },
+      { title: 'Music and practice' },
     ],
   },
   contact: {
@@ -267,8 +206,8 @@ export const personalData = {
     tridentEmail: 'cole@tridentemberdefense.com',
     linkedinUrl: 'https://www.linkedin.com/in/milescoler/',
     githubUrl: 'https://github.com/milescoler',
-    resumeUrl: '/Cole-Richards-Resume.pdf',
+    resumeUrl: '/Cole_Richards_Resume.pdf',
     statement:
-      'I am looking for work where I can keep growing as a builder, operator, and data scientist while contributing to something thoughtful, useful, and grounded in the real world.',
+      "I'm looking for entry-level data analyst or data science roles starting June 2026, with part-time work (10–20 hrs/week) available now. Especially interested in health, human behavior, and physical-science data work at companies doing something thoughtful and grounded in the real world. Based in Santa Monica through summer, relocating to San Diego in August — open to LA, remote, or San Diego roles.",
   },
 };
