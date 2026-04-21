@@ -6,7 +6,7 @@ This repo contains the Vite/React source for the personal site and the synced ro
 
 - Source entry: `index.src.html`
 - App code: `src/main.jsx`, `src/App.jsx`, `src/data/personalData.js`, `src/index.css`
-- Public asset: `public/Cole-Richards-Resume.pdf`
+- Public asset: `public/Cole_Richards_Resume.pdf`
 - Deploy sync scripts: `scripts/restore-source-index.mjs`, `scripts/sync-pages.mjs`
 
 ## Commands

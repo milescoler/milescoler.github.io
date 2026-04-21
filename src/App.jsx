@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Download,
   Github,
-  GraduationCap,
   Linkedin,
   Mail,
   Menu,
@@ -19,14 +18,29 @@ const sectionReveal = {
   transition: { duration: 0.45, ease: 'easeOut' },
 };
 
+function renderTitle(title, accent) {
+  if (!accent || !title.includes(accent)) {
+    if (import.meta.env.DEV && accent) {
+      // eslint-disable-next-line no-console
+      console.warn(`hero.titleAccent "${accent}" not found in hero.title`);
+    }
+    return title;
+  }
+  const index = title.indexOf(accent);
+  const before = title.slice(0, index);
+  const after = title.slice(index + accent.length);
+  return (
+    <>
+      {before}
+      <span className="accent-gradient">{accent}</span>
+      {after}
+    </>
+  );
+}
+
 function App() {
-  const { name, navigation, hero, profile, work, projects, education, personal, contact } = personalData;
+  const { name, navigation, hero, profile, work, projects, education, personal, contact, availability } = personalData;
   const [menuOpen, setMenuOpen] = useState(false);
-  const heroHighlights = [
-    { label: 'Current role', value: profile.facts[0]?.value ?? 'Founder and COO, Trident Ember Defense' },
-    { label: 'Based in', value: 'Santa Monica / Los Angeles' },
-    { label: 'Graduating', value: 'June 2026' },
-  ];
 
   return (
     <div className="page">
@@ -62,95 +76,69 @@ function App() {
       </header>
 
       <main id="top" className="container">
-        <motion.section
-          className="hero hero--image"
-          {...sectionReveal}
-        >
-          <div className="hero__overlay">
-            <div className="hero__grid">
-              <div className="hero__content">
-                <p className="eyebrow">{hero.eyebrow}</p>
-                <h1>{hero.title}</h1>
-                <p className="hero__lede">{hero.lede}</p>
-                <p className="hero__body">{hero.body}</p>
+        <motion.section className="hero" {...sectionReveal}>
+          <p className="eyebrow">{hero.eyebrow}</p>
+          <h1>{renderTitle(hero.title, hero.titleAccent)}</h1>
+          <p className="hero__lede">{hero.lede}</p>
+          <p className="hero__body">{hero.body}</p>
 
-                <div className="actions">
-                  <a className="button" href={`mailto:${contact.primaryEmail}`}>
-                    <Mail size={16} />
-                    Email
-                  </a>
-                  <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-                    <Linkedin size={16} />
-                    LinkedIn
-                  </a>
-                  <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
-                    <Github size={16} />
-                    GitHub
-                  </a>
-                  <a className="button button--ghost" href={contact.resumeUrl} download>
-                    <Download size={16} />
-                    Download resume
-                  </a>
-                </div>
+          <div className="actions">
+            <a className="button" href={`mailto:${contact.primaryEmail}`}>
+              <Mail size={16} />
+              Email
+            </a>
+            <a className="button button--ghost" href={contact.linkedinUrl} target="_blank" rel="noreferrer">
+              <Linkedin size={16} />
+              LinkedIn
+            </a>
+            <a className="button button--ghost" href={contact.githubUrl} target="_blank" rel="noreferrer">
+              <Github size={16} />
+              GitHub
+            </a>
+            <a className="button button--ghost" href={contact.resumeUrl} download>
+              <Download size={16} />
+              Download resume
+            </a>
+          </div>
+
+          <div className="availability">
+            {availability.map((item) => (
+              <div key={item.label} className="availability__cell">
+                <div className="availability__label">{item.label}</div>
+                <div className="availability__value">{item.value}</div>
               </div>
-
-              <aside className="hero__aside">
-                <div className="hero__feature">
-                  <img
-                    className="hero__feature-image"
-                    src={profile.headshot.src}
-                    alt={profile.headshot.alt}
-                  />
-
-                  <div className="hero__feature-body">
-                    <div className="hero__details">
-                      {heroHighlights.map((item) => (
-                        <div key={item.label} className="hero__detail">
-                          <span>{item.label}</span>
-                          <strong>{item.value}</strong>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="tags hero__tags">
-                      {personal.interests.map((interest) => (
-                        <span key={interest.title}>{interest.title}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </aside>
-            </div>
+            ))}
           </div>
         </motion.section>
 
-        <motion.section id="about" className="section section--split" {...sectionReveal}>
-          <SectionHeading title="About" />
-
-          <div className="split">
-            <MediaCard item={profile.headshot} className="card card--image" />
-
-            <div className="stack">
-              {profile.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="body-copy">
-                  {paragraph}
-                </p>
-              ))}
-
-              <div className="facts">
-                {profile.facts.map((fact) => (
-                  <div key={fact.label} className="fact">
-                    <span>{fact.label}</span>
-                    <strong>{fact.value}</strong>
-                  </div>
-                ))}
+        <section className="meta-row">
+          <div className="meta-row__portrait">
+            <img src={profile.headshot.src} alt={profile.headshot.alt} />
+          </div>
+          <div className="meta-row__facts">
+            {profile.facts.map((fact) => (
+              <div key={fact.label} className="meta-row__fact">
+                <div className="meta-row__label">{fact.label}</div>
+                <div className="meta-row__value">{fact.value}</div>
               </div>
-            </div>
+            ))}
+          </div>
+        </section>
+
+        <motion.section id="about" className="section section--split" {...sectionReveal}>
+          <SectionHeading eyebrow="About" title="Grounded in quantitative fundamentals, built on real work." />
+
+          <div className="stack">
+            {profile.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="body-copy">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </motion.section>
 
         <motion.section id="work" className="section" {...sectionReveal}>
-          <SectionHeading title="Work" subtitle="Selected roles and operating experience." />
+          <SectionHeading eyebrow="Work" title="Selected roles and operating experience." />
 
           <div className="list">
             {work.map((item) => (
@@ -186,7 +174,7 @@ function App() {
         </motion.section>
 
         <motion.section id="projects" className="section" {...sectionReveal}>
-          <SectionHeading title="Projects" subtitle="Examples of how I turn ideas into tools, systems, and execution." />
+          <SectionHeading eyebrow="Projects" title="Ideas turned into tools, systems, and execution." />
 
           <div className="project-list">
             {projects.map((project) => (
@@ -218,7 +206,7 @@ function App() {
         </motion.section>
 
         <motion.section id="education" className="section section--split" {...sectionReveal}>
-          <SectionHeading title="Education" />
+          <SectionHeading eyebrow="Education" title="Where I built the quantitative base." />
 
           <div className="education-grid">
             {education.map((item) => (
@@ -242,7 +230,7 @@ function App() {
         </motion.section>
 
         <motion.section id="life" className="section" {...sectionReveal}>
-          <SectionHeading title="Outside work" subtitle="This part of my life shapes the kind of work I want to do." />
+          <SectionHeading eyebrow="Life" title="Outside work." subtitle="This part of my life shapes the kind of work I want to do." />
 
           <div className="split">
             <MediaCard item={personal.featuredImage} className="card card--image" />
@@ -260,7 +248,7 @@ function App() {
         </motion.section>
 
         <motion.section id="contact" className="section contact" {...sectionReveal}>
-          <SectionHeading title="Contact" />
+          <SectionHeading eyebrow="Contact" title="Let's talk." />
 
           <div className="contact-layout">
             <div className="contact-intro">
@@ -307,23 +295,12 @@ function App() {
   );
 }
 
-function SectionHeading({ title, subtitle }) {
+function SectionHeading({ title, subtitle, eyebrow }) {
   return (
     <div className="section-heading">
+      {eyebrow ? <p className="section-heading__label">{eyebrow}</p> : null}
       <h2>{title}</h2>
       {subtitle ? <p>{subtitle}</p> : null}
-    </div>
-  );
-}
-
-function MetaItem({ icon, label, value }) {
-  return (
-    <div className="meta-item">
-      <div className="meta-item__icon">{icon}</div>
-      <div>
-        <span>{label}</span>
-        <strong>{value}</strong>
-      </div>
     </div>
   );
 }
