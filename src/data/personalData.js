@@ -10,28 +10,55 @@ export const personalData = {
     { label: 'About', href: '#about' },
     { label: 'Work', href: '#work' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Education', href: '#education' },
+    { label: 'Now', href: '#now' },
     { label: 'Life', href: '#life' },
     { label: 'Contact', href: '#contact' },
   ],
   hero: {
-    eyebrow: 'UCLA Statistics & Data Science · Graduating June 2026',
-    title: 'Data work that holds up in real conditions.',
-    titleAccent: 'in real conditions',
+    eyebrow: 'UCLA Statistics & Data Science · Class of 2026',
+    title: 'Builder, analyst, people person.',
+    titleAccent: 'people person',
     backgroundImage: {
       src: lifestyleImage,
       alt: 'Cole Richards outdoors in California',
     },
     lede:
-      'Weather, fire, human behavior, physical systems. Recent work: a wildfire startup I co-founded in Southern California, geospatial modeling, and full-stack operations software.',
+      "I co-founded a wildfire defense startup, ship the software that runs it, and led an 8-person crew on a 3,400 sq ft install. I'm finishing a B.S. in Statistics & Data Science at UCLA.",
     body:
-      'Looking for entry-level data analyst and data science roles starting June 2026, with part-time availability now.',
+      "Looking for entry-level data analyst and data scientist roles starting June 2026. Open to part-time data work or customer-facing roles in the meantime — coaching, events, hospitality, sales.",
   },
-  availability: [
-    { label: 'Availability', value: 'Part-time now (10–20 hrs/week) · Full-time from June 12, 2026' },
-    { label: 'Location',     value: 'Santa Monica through summer · San Diego from August · Open to remote' },
-    { label: 'Target roles', value: 'Data Analyst · Data Scientist · Product Analyst' },
+  proof: [
+    { value: '$20K+', label: 'Early revenue closed at Trident' },
+    { value: '3', label: 'Wildfire installations executed' },
+    { value: '8', label: 'Person crew led on-site' },
+    { value: '3.98', label: 'GPA at SBCC, transferred to UCLA' },
   ],
+  now: {
+    intro:
+      "Two tracks open right now. Same person, two different things you might want to hire me for.",
+    tracks: [
+      {
+        kind: 'data',
+        label: 'Data work',
+        title: 'Data analyst / data scientist',
+        timeframe: 'Full-time from June 12, 2026 · Part-time now (10–20 hrs/wk)',
+        body:
+          'Statistical modeling, time-series, geospatial. Drawn to health, human behavior, and the physical world. Open to LA, San Diego (from August), or remote.',
+        resumeLabel: 'Download data resume',
+        resumeUrl: '/Cole_Richards_Resume.pdf',
+      },
+      {
+        kind: 'service',
+        label: 'Customer-facing',
+        title: 'Coaching · events · hospitality · sales',
+        timeframe: 'Available now in Santa Monica · San Diego from August',
+        body:
+          "I've coached a UCLA club volleyball team, run bar and floor at events, and held a sales role through a year of college. I'm composed, fast on my feet, and good with people.",
+        resumeLabel: 'Download service resume',
+        resumeUrl: '/Cole_Richards_Resume_Service.pdf',
+      },
+    ],
+  },
   profile: {
     headshot: {
       src: headshotImage,
@@ -42,94 +69,117 @@ export const personalData = {
       note: 'UCLA Statistics & Data Science student, founder, and engineer.',
     },
     paragraphs: [
-      "I transferred to UCLA after earning associate degrees in Mathematics and Computer Science at Santa Barbara City College. That path gave me a strong quantitative base — statistics, geospatial modeling, programming — but what I care about most is building things that matter in real life, not just in theory.",
-      "A lot of my recent work has been in wildfire, mapping, and operations at a startup I co-founded. The throughline across all of it is the same: using data and software to understand real-world systems and help people make better decisions. I'm most interested in work on health, human behavior, and the physical world — domains where modeling connects to outcomes that actually matter.",
-      "At Trident Ember Defense, that has meant building software, planning systems, and field operations that protect homes in high-risk areas. Long term, I want to keep growing as a data scientist and builder, doing practical work that's useful, grounded, and worth spending time on.",
+      "I transferred to UCLA after earning A.A. degrees in Mathematics and Computer Science at SBCC with a 3.98 GPA. The path through community college taught me how to work — show up, do the reading, ask the question, take the harder course. The path through UCLA gave me applied geostatistics, regression, time-series, and experimental design.",
+      "Most of what I've built outside class is at Trident Ember Defense, a wildfire defense startup I co-founded last August. I write the software (CRM, quoter, 2D mapping tool, inventory, customer planner), run the spatial analysis that drives where we focus, and handle the field execution when it's time to actually install. That mix of analysis, product, and on-the-ground work is the work I want to keep doing.",
+      "Outside that I coach UCLA's women's club volleyball team, surf, play soccer, and spend time with my dog Toby. I'm a people person with a competitive edge — that's the throughline whether I'm leading an 8-person install crew, running practice, or pairing with someone on a model.",
     ],
     facts: [
-      { label: 'Current role', value: 'Founder and COO, Trident Ember Defense' },
-      { label: 'Degree', value: 'B.S. in Statistics & Data Science, UCLA' },
-      { label: 'Expected graduation', value: 'June 2026' },
-      { label: 'Primary interest', value: 'Health, behavior, and physical-world data science' },
+      { label: 'Current role', value: 'Co-founder & COO, Trident Ember Defense' },
+      { label: 'Degree', value: 'B.S. Statistics & Data Science, UCLA' },
+      { label: 'Graduating', value: 'June 2026' },
+      { label: 'Focus', value: 'Health, human behavior, and physical-world data' },
     ],
   },
   work: [
     {
-      role: 'Founder and COO',
+      role: 'Co-Founder & COO',
       company: 'Trident Ember Defense',
       period: 'Aug 2025 – Present',
-      location: 'Santa Monica / Los Angeles and Ventura Counties',
+      location: 'Los Angeles & Ventura Counties',
       summary:
-        'I co-founded Trident Ember Defense to help protect homes in wildfire-prone areas. My role spans software, operations, targeting, installation planning, and client-facing field execution.',
+        "I co-founded Trident to help protect homes in wildfire-prone areas. I own software, geospatial targeting, planning, and lead field execution.",
       highlights: [
-        'Built the CRM, quoting tool, inventory system, 2D sprinkler-mapping software, and internal admin tooling from scratch.',
-        'Designed dozens of exterior wildfire sprinkler systems and helped save hundreds of planning hours through better digital workflows.',
-        'Used spatial analysis to identify high-risk wildfire areas and connect wildfire conditions to property-level targeting.',
-        'Led a one-day installation on a 3,400-square-foot two-story home, coordinating an 8-person crew and translating weeks of planning into field execution.',
+        'Built and shipped the full internal stack from scratch — CRM, quoter, 3D print queue, 2D sprinkler mapping tool, customer planner, marketing site — using Supabase, Mapbox, and Vite.',
+        'Drove client targeting through geospatial risk analysis in QGIS and ArcGIS, layering WUI zones, Fire Hazard Severity Zones, and vegetation data to prioritize outreach across high-risk California.',
+        'Closed and executed 3 installations generating $20K+ in early revenue, including field lead on a 3,400 sq ft residential project with an 8-person crew.',
       ],
-      tools: ['Supabase', 'Swift', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Mapbox', 'Netlify', 'GIS'],
+      tools: ['Supabase', 'Mapbox', 'QGIS', 'ArcGIS', 'JavaScript', 'Vite', 'Swift'],
       link: 'https://tridentemberdefense.com',
     },
     {
       role: 'Inventory Specialist',
       company: 'UCLA Housing IT',
-      period: 'Aug 2024 - Dec 2025',
+      period: 'Aug 2024 – Dec 2025',
       location: 'UCLA',
       summary:
-        'I supported technology operations across UCLA Housing and Hospitality and looked for ways to make tracking, visibility, and restocking more systematic.',
+        'Tech operations across UCLA Housing & Hospitality. I focused on making tracking, audit history, and restocking more systematic than what was there.',
       highlights: [
-        'Managed inventory records for technology assets across housing and hospitality operations.',
-        'Supported hardware intake, device setup, and database accuracy for campus technology systems.',
-        'Helped shape more predictive and organized approaches to restocking and inventory visibility.',
+        'Replaced a static inventory spreadsheet with a structured logging system, enabling change history, audit trail, and usage trend analysis across thousands of assets.',
+        'Managed inventory across 12+ product categories for campus housing operations, supporting device setup, intake, and data accuracy.',
       ],
-      tools: ['Inventory systems', 'Operations', 'Device management', 'Process improvement'],
+      tools: ['Inventory systems', 'Operations', 'Process improvement'],
     },
     {
-      role: 'Accounts Analysis and Development',
+      role: 'Accounts Analysis & Development',
       company: 'Esperer Holdings',
-      period: 'Oct 2020 - Oct 2021',
+      period: 'Oct 2020 – Oct 2021',
       location: 'Santa Barbara',
       summary:
-        'This was where I first learned that structured analysis and automation can change how a team works day to day. I built faster Excel-based workflows and trained the team to use them.',
+        "Where I first saw what a small piece of automation can do for a team's day. I built faster Excel-based workflows and trained the team to use them.",
       highlights: [
         'Automated daily account extraction and feature analysis for thousands of records.',
-        'Improved internal tracking and removed hours of repetitive manual work.',
-        'Rolled the new workflow out across the team and made it part of normal operations.',
+        'Cut hours of repetitive manual work and rolled the workflow out across the team.',
       ],
-      tools: ['Excel', 'Operations analysis', 'Workflow design', 'Team training'],
+      tools: ['Excel', 'Workflow design', 'Team training'],
     },
   ],
+  secondaryWork: {
+    eyebrow: 'Other recent work',
+    title: 'Customer-facing roles',
+    description:
+      "Roles that built the people-side. They're on my service resume in detail; here's the short version.",
+    items: [
+      {
+        role: 'Volleyball Coach',
+        company: "UCLA Women's Club Indoor Volleyball",
+        period: 'Sep 2024 – Apr 2026',
+        note: 'Designed and ran practices for a competitive club team. Coaching plus mentoring; managed scheduling, equipment, and team comms.',
+      },
+      {
+        role: 'Server & Event Staff',
+        company: 'GlenAnnie Golf Course',
+        period: 'Dec 2023 – Aug 2024',
+        note: 'Weddings, quinceañeras, wine tastings, corporate outings. Ran the bar during events; got comfortable fast in any room.',
+      },
+      {
+        role: 'Sales Associate',
+        company: 'Tillys, Santa Barbara',
+        period: 'Dec 2022 – Dec 2023',
+        note: 'Hit and exceeded targets by knowing the products and actually listening. Customers came back and remembered me.',
+      },
+    ],
+  },
   projects: [
     {
-      category: 'Spatial Analysis + Field Strategy',
+      category: 'Spatial Analysis · Field Strategy',
       title: 'Wildfire Risk Targeting',
       description:
-        'I use spatial analysis to find where wildfire protection work is most urgent, then connect that analysis to practical outreach and installation planning.',
+        'Spatial workflow that identifies where wildfire defense work is most urgent, then connects that to outreach and installation planning at Trident.',
       points: [
-        'Combines wildfire conditions, local risk patterns, and property-level targeting in one spatial workflow.',
-        'Supports Trident’s partner conversations and helps focus effort where it can matter most.',
-        'Shows how I like to connect analysis, product thinking, and execution in the real world.',
+        'Layers WUI zones, CAL FIRE Fire Hazard Severity Zones, vegetation data, and 30-year fire perimeter history.',
+        'Drives partner conversations and focuses field effort where it matters most.',
+        'How I like to work: analysis, product thinking, and execution all at the same time.',
       ],
-      stack: ['ArcGIS', 'QGIS', 'R geospatial libraries', 'GIS workflows'],
+      stack: ['ArcGIS', 'QGIS', 'GeoPandas', 'R (geoR, gstat)'],
       media: {
         src: mappingImage,
         alt: 'Animated wildfire burn-line timeline map',
         variant: 'tall',
         minimalCaption: true,
-        note: 'Burn-line timeline from the 1990s onward, shown in 5-year increments.',
+        note: 'Burn-line timeline from the 1990s onward, in 5-year increments.',
       },
     },
     {
-      category: 'Product Concept + Live Conditions',
+      category: 'Product · Live Conditions',
       title: 'EmberCast',
       description:
-        'A mobile app concept and working tool for viewing wildfire conditions through dashboard and map views, designed for homeowners and firefighters who need usable information quickly.',
+        'A mobile app concept for viewing wildfire conditions through dashboard and map views — built for homeowners and firefighters who need usable information fast.',
       points: [
-        'Displays hourly, weekly, and historical condition views from public data sources.',
-        'Includes a live wind-particle map and risk preview for spatial awareness.',
-        'Reflects my interest in building products that translate complexity into something clear and useful for real people.',
+        'Hourly, weekly, and historical condition views from public data sources.',
+        'Live wind-particle map and risk preview for spatial awareness.',
+        'A take on translating complexity into something clear and useful.',
       ],
-      stack: ['Swift', 'Public data APIs', 'Mapping interfaces', 'Forecast visualization'],
+      stack: ['Swift', 'Public data APIs', 'Mapping interfaces'],
       media: {
         src: embercastImage,
         alt: 'EmberCast mobile dashboard screenshot',
@@ -139,75 +189,101 @@ export const personalData = {
       },
     },
     {
-      category: 'Internal Tools + Mapping',
-      title: 'Operations and Planning Tools',
+      category: 'Internal Tools · Mapping',
+      title: 'Trident Ops & Planning Stack',
       description:
-        'I built Trident’s internal tools and mapping workflows together, because quoting, inventory, planning, and layout design all needed to connect instead of living in separate systems.',
+        'Built the company\'s internal tools and mapping workflows together, because quoting, inventory, planning, and layout design needed to connect — not live in separate systems.',
       points: [
-        'Combined CRM, quoting, inventory, and admin workflows into clearer internal systems.',
-        'Built the sprinkler planning workflow that made roofline and eave layouts faster and easier to revise.',
-        'Reduced manual coordination while making field execution more precise.',
+        'CRM, quoting, inventory, and admin workflows in one connected internal system.',
+        '2D sprinkler planning tool that made roofline and eave layouts faster to revise.',
+        'Cut manual coordination while making field execution more precise.',
       ],
-      stack: ['Supabase', 'Mapbox', 'HTML', 'CSS', 'JavaScript', 'Vite', 'Netlify'],
+      stack: ['Supabase', 'Mapbox', 'Vite', 'JavaScript', 'Netlify'],
       media: {
         src: internalToolImage,
         alt: 'Trident operations and sprinkler planning tool screenshot',
         variant: 'landscape',
         minimalCaption: true,
-        note: 'Planning, customer tracking, and install preparation in one workflow.',
+        note: 'Planning, customer tracking, and install prep in one workflow.',
       },
     },
   ],
+  inProgressProjects: {
+    eyebrow: 'In progress',
+    title: 'What I\'m building right now',
+    items: [
+      {
+        title: 'Personal Health & Training Load Analysis',
+        stack: 'Python · pandas · statsmodels · matplotlib',
+        description:
+          'Longitudinal analysis of my own Apple Watch and training data, modeling relationships between training load, recovery, sleep, and HRV across surfing, volleyball, and strength training. Time-series decomposition, autocorrelation, mixed-effects regression for repeated measures.',
+      },
+      {
+        title: 'California Wildfire Risk Model',
+        stack: 'Python · GeoPandas · Plotly · Streamlit',
+        description:
+          'ZIP-level wildfire risk score for LA County combining CAL FIRE hazard zones, 30-year fire perimeter history, and vegetation indices. Validating against CA Dept. of Insurance non-renewal rates. Deploying as a Streamlit dashboard.',
+      },
+      {
+        title: 'Geostatistical Kriging Analysis',
+        stack: 'R · geoR · gstat',
+        description:
+          'UCLA C173 coursework. Ordinary and universal kriging with variogram fitting and PRESS cross-validation to predict environmental conditions across unsampled locations.',
+      },
+      {
+        title: 'Airbnb Amenity Pricing Analysis',
+        stack: 'R · tidyverse · glmnet',
+        description:
+          'LASSO logistic regression with phrase-level amenity tokenization to identify which listing features predict above-median pricing. AUC evaluation with neighborhood-stratified confounding analysis.',
+      },
+    ],
+  },
   education: [
     {
       school: 'University of California, Los Angeles',
-      degree: 'B.S. in Statistics & Data Science',
-      period: 'Sep 2024 - Jun 2026',
+      degree: 'B.S. Statistics & Data Science',
+      period: 'Sep 2024 – Jun 2026',
       location: 'Los Angeles',
       notes: [
-        'Graduating in June 2026.',
-        'Current emphasis on statistics, applied modeling, and building systems that hold up in the real world.',
-        'Most interested in mission-driven product, operations, and data work with a strong human component.',
-        'Targeting roles where I can help build tools and systems that are genuinely useful.',
+        'Coursework: Applied Geostatistics (C173), Computation & Optimization (102B), Design & Analysis of Experiments (141XP), Regression & Data Mining, Probability.',
       ],
     },
     {
       school: 'Santa Barbara City College',
-      degree: 'Associate Degrees in Mathematics and Computer Science',
-      period: 'Aug 2022 - May 2024',
+      degree: 'A.A. Mathematics · A.A. Computer Science',
+      period: 'Aug 2022 – May 2024',
       location: 'Santa Barbara',
-      notes: [
-        'Graduated with a 3.98 GPA.',
-        "Earned President's Honor Roll recognition.",
-        'Built the quantitative and programming foundation for later work in data and operations.',
-      ],
+      notes: ['3.98 GPA · President\'s Honor Roll.'],
     },
   ],
   personal: {
     summary:
-      'Outside of school and startup work, I spend a lot of time surfing, playing volleyball and soccer, playing guitar, practicing yoga and meditation, and hanging out with my dog Toby. That part of my life is not separate from my ambition. It has a lot to do with the kind of work I want to do and the kind of person I want to be.',
+      "Outside school and Trident, I surf, play volleyball and soccer, coach, play guitar, practice yoga, and hang out with my dog Toby. None of that is separate from how I work — it's where the patience, the competitive edge, and the ability to read a room come from.",
     featuredImage: {
       src: lifestyleImage,
       alt: 'Cole Richards lifestyle photo outdoors',
       variant: 'portrait',
       tag: 'Outside work',
       label: 'A life that stays close to the outdoors',
-      note: 'How I live has a lot to do with the kind of work I want to keep doing.',
+      note: 'How I live shapes the kind of work I want to keep doing.',
     },
     interests: [
       { title: 'Surfing' },
-      { title: 'Outdoors' },
-      { title: 'Sports' },
-      { title: 'Music and practice' },
+      { title: 'Volleyball coaching' },
+      { title: 'Spearfishing' },
+      { title: 'Yoga & meditation' },
+      { title: 'Guitar' },
     ],
   },
   contact: {
     primaryEmail: 'milescoler@gmail.com',
     tridentEmail: 'cole@tridentemberdefense.com',
+    phone: '424-757-3084',
     linkedinUrl: 'https://www.linkedin.com/in/milescoler/',
     githubUrl: 'https://github.com/milescoler',
     resumeUrl: '/Cole_Richards_Resume.pdf',
+    serviceResumeUrl: '/Cole_Richards_Resume_Service.pdf',
     statement:
-      "I'm looking for entry-level data analyst or data science roles starting June 2026, with part-time work (10–20 hrs/week) available now. Especially interested in health, human behavior, and physical-science data work at companies doing something thoughtful and grounded in the real world. Based in Santa Monica through summer, relocating to San Diego in August — open to LA, remote, or San Diego roles.",
+      "Easiest way to reach me is email. If you're hiring for a data role starting June 2026, or for part-time customer-facing work in LA or San Diego right now, I'd like to hear about it.",
   },
 };

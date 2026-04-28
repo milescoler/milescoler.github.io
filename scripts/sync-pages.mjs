@@ -21,9 +21,10 @@ if (existsSync(indexSource)) {
   cpSync(indexSource, indexTarget);
 }
 
-const resumeSource = resolve(distDir, 'Cole_Richards_Resume.pdf');
-const resumeTarget = resolve(root, 'Cole_Richards_Resume.pdf');
-
-if (existsSync(resumeSource)) {
-  cpSync(resumeSource, resumeTarget);
+for (const file of ['Cole_Richards_Resume.pdf', 'Cole_Richards_Resume_Service.pdf']) {
+  const src = resolve(distDir, file);
+  const tgt = resolve(root, file);
+  if (existsSync(src)) {
+    cpSync(src, tgt);
+  }
 }
