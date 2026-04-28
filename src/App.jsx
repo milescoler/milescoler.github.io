@@ -39,7 +39,21 @@ function renderTitle(title, accent) {
 }
 
 function App() {
-  const { name, navigation, hero, profile, work, projects, education, personal, contact, availability } = personalData;
+  const {
+    name,
+    navigation,
+    hero,
+    proof,
+    now,
+    profile,
+    work,
+    secondaryWork,
+    projects,
+    inProgressProjects,
+    education,
+    personal,
+    contact,
+  } = personalData;
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -95,17 +109,13 @@ function App() {
               <Github size={16} />
               GitHub
             </a>
-            <a className="button button--ghost" href={contact.resumeUrl} download>
-              <Download size={16} />
-              Download resume
-            </a>
           </div>
 
-          <div className="availability">
-            {availability.map((item) => (
-              <div key={item.label} className="availability__cell">
-                <div className="availability__label">{item.label}</div>
-                <div className="availability__value">{item.value}</div>
+          <div className="proof">
+            {proof.map((item) => (
+              <div key={item.label} className="proof__cell">
+                <div className="proof__value">{item.value}</div>
+                <div className="proof__label">{item.label}</div>
               </div>
             ))}
           </div>
@@ -126,7 +136,7 @@ function App() {
         </section>
 
         <motion.section id="about" className="section section--split" {...sectionReveal}>
-          <SectionHeading eyebrow="About" title="Grounded in quantitative fundamentals, built on real work." />
+          <SectionHeading eyebrow="About" title="How I got here." />
 
           <div className="stack">
             {profile.paragraphs.map((paragraph) => (
@@ -138,7 +148,7 @@ function App() {
         </motion.section>
 
         <motion.section id="work" className="section" {...sectionReveal}>
-          <SectionHeading eyebrow="Work" title="Selected roles and operating experience." />
+          <SectionHeading eyebrow="Work" title="Where I've spent my time." />
 
           <div className="list">
             {work.map((item) => (
@@ -171,10 +181,38 @@ function App() {
               </article>
             ))}
           </div>
+
+          <div className="secondary-work">
+            <p className="section-heading__label">{secondaryWork.eyebrow}</p>
+            <h3 className="secondary-work__title">{secondaryWork.title}</h3>
+            <p className="body-copy">{secondaryWork.description}</p>
+            <div className="secondary-work__list">
+              {secondaryWork.items.map((item) => (
+                <article key={`${item.company}-${item.role}`} className="secondary-work__item">
+                  <div className="secondary-work__head">
+                    <div>
+                      <h4>{item.role}</h4>
+                      <p className="muted">{item.company}</p>
+                    </div>
+                    <span className="secondary-work__period">{item.period}</span>
+                  </div>
+                  <p className="body-copy">{item.note}</p>
+                </article>
+              ))}
+            </div>
+            <a
+              className="secondary-work__link"
+              href={contact.serviceResumeUrl}
+              download
+            >
+              <Download size={14} />
+              Download service resume
+            </a>
+          </div>
         </motion.section>
 
         <motion.section id="projects" className="section" {...sectionReveal}>
-          <SectionHeading eyebrow="Projects" title="Ideas turned into tools, systems, and execution." />
+          <SectionHeading eyebrow="Projects" title="Things I've built or am building." />
 
           <div className="project-list">
             {projects.map((project) => (
@@ -203,10 +241,43 @@ function App() {
               </article>
             ))}
           </div>
+
+          <div className="in-progress">
+            <p className="section-heading__label">{inProgressProjects.eyebrow}</p>
+            <h3 className="in-progress__title">{inProgressProjects.title}</h3>
+            <div className="in-progress__grid">
+              {inProgressProjects.items.map((item) => (
+                <article key={item.title} className="in-progress__item">
+                  <h4>{item.title}</h4>
+                  <p className="in-progress__stack">{item.stack}</p>
+                  <p className="body-copy">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section id="now" className="section" {...sectionReveal}>
+          <SectionHeading eyebrow="Now" title="What I'm available for." subtitle={now.intro} />
+
+          <div className="now-grid">
+            {now.tracks.map((track) => (
+              <article key={track.kind} className={`now-card now-card--${track.kind}`}>
+                <p className="now-card__label">{track.label}</p>
+                <h3>{track.title}</h3>
+                <p className="now-card__timeframe">{track.timeframe}</p>
+                <p className="body-copy">{track.body}</p>
+                <a className="button button--ghost now-card__cta" href={track.resumeUrl} download>
+                  <Download size={14} />
+                  {track.resumeLabel}
+                </a>
+              </article>
+            ))}
+          </div>
         </motion.section>
 
         <motion.section id="education" className="section section--split" {...sectionReveal}>
-          <SectionHeading eyebrow="Education" title="Where I built the quantitative base." />
+          <SectionHeading eyebrow="Education" title="Where I built the base." />
 
           <div className="education-grid">
             {education.map((item) => (
@@ -230,7 +301,7 @@ function App() {
         </motion.section>
 
         <motion.section id="life" className="section" {...sectionReveal}>
-          <SectionHeading eyebrow="Life" title="Outside work." subtitle="This part of my life shapes the kind of work I want to do." />
+          <SectionHeading eyebrow="Life" title="Outside work." />
 
           <div className="split">
             <MediaCard item={personal.featuredImage} className="card card--image" />
@@ -261,15 +332,23 @@ function App() {
                 </a>
                 <a className="button button--ghost" href={contact.resumeUrl} download>
                   <Download size={16} />
-                  Download resume
+                  Data resume
+                </a>
+                <a className="button button--ghost" href={contact.serviceResumeUrl} download>
+                  <Download size={16} />
+                  Service resume
                 </a>
               </div>
             </div>
 
             <div className="contact-panel">
               <div className="contact-panel__row">
-                <span>Main contact</span>
+                <span>Email</span>
                 <a href={`mailto:${contact.primaryEmail}`}>{contact.primaryEmail}</a>
+              </div>
+              <div className="contact-panel__row">
+                <span>Phone</span>
+                <a href={`tel:${contact.phone.replace(/[^0-9]/g, '')}`}>{contact.phone}</a>
               </div>
               <div className="contact-panel__row">
                 <span>LinkedIn</span>
