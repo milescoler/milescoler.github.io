@@ -88,14 +88,6 @@ img {
   text-transform: none;
 }
 
-.brand::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--accent);
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -191,15 +183,6 @@ img {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.eyebrow::before,
-.section-heading__label::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--accent);
 }
 
 .project__eyebrow {
@@ -874,22 +857,6 @@ img {
   color: var(--muted-2);
   font-weight: 600;
   margin: 0;
-}
-
-.now-card--data .now-card__label::before,
-.now-card--service .now-card__label::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-}
-
-.now-card--data .now-card__label::before {
-  background: var(--accent);
-}
-
-.now-card--service .now-card__label::before {
-  background: var(--accent-2);
 }
 
 .now-card h3 {
