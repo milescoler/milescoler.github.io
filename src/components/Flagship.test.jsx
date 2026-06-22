@@ -27,5 +27,7 @@ describe('Flagship', () => {
     }
     expect(screen.getByText(flagship.outcomes)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /tridentemberdefense/i })).toHaveAttribute('href', flagship.link);
+    expect(screen.getByText(flagship.eyebrow)).toBeInTheDocument();
+    expect(screen.getByAltText(flagship.media[0].alt)).toBeInTheDocument();
   });
 });

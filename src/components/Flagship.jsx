@@ -19,7 +19,7 @@ export default function Flagship({ flagship }) {
 
       <p className="flagship__outcomes mono">{flagship.outcomes}</p>
       <a className="flagship__link" href={flagship.link} target="_blank" rel="noreferrer">
-        tridentemberdefense.com <ArrowUpRight size={15} />
+        {flagship.link.replace('https://', '')} <ArrowUpRight size={15} />
       </a>
 
       <div className="flagship__media">
