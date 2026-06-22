@@ -14,6 +14,7 @@ describe('SelectedWork', () => {
     expect(screen.getByText('CA Wildfire Risk Model')).toBeInTheDocument();
     expect(screen.getByText('EmberCast')).toBeInTheDocument();
     expect(screen.getByText('Physical world')).toBeInTheDocument();
+    expect(screen.getByText('Python')).toBeInTheDocument();
   });
 
   it('marks in-progress items', () => {

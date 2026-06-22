@@ -29,7 +29,7 @@ export default function SelectedWork({ work, github }) {
       </div>
 
       <div className="work__github">
-        <span className="label">{github.note}</span>
+        <a className="label work__github-note" href={github.url} target="_blank" rel="noreferrer">{github.note}</a>
         <ul>
           {github.repos.map((r) => (
             <li key={r.url}>

@@ -265,6 +265,7 @@ p { margin: 0; }
 .work__github { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
 .work__github ul { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 18px; }
 .work__github a { display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-size: 14px; }
+.work__github-note:hover { color: var(--accent); }
 @media (max-width: 760px) {
   .work__item:has(.work__media) { grid-template-columns: 1fr; }
 }
