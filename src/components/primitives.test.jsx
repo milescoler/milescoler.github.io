@@ -15,9 +15,19 @@ describe('primitives', () => {
     expect(screen.getByText('early revenue')).toBeInTheDocument();
   });
 
+  it('Stat value uses the mono class', () => {
+    render(<Stat value="$20K+" label="early revenue" />);
+    expect(screen.getByText('$20K+')).toHaveClass('mono');
+  });
+
   it('Plate renders an image with alt and a caption', () => {
     render(<Plate src="/x.png" alt="a map" caption="a caption" />);
     expect(screen.getByAltText('a map')).toBeInTheDocument();
     expect(screen.getByText('a caption')).toBeInTheDocument();
+  });
+
+  it('Plate omits the figcaption when caption is absent', () => {
+    const { container } = render(<Plate src="/x.png" alt="a map" />);
+    expect(container.querySelector('figcaption')).toBeNull();
   });
 });
