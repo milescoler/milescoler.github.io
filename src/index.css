@@ -269,3 +269,16 @@ p { margin: 0; }
 @media (max-width: 760px) {
   .work__item:has(.work__media) { grid-template-columns: 1fr; }
 }
+
+.xp__group { display: flex; flex-direction: column; }
+.xp__group--edu { margin-top: 24px; border-top: 1px solid var(--rule); padding-top: 24px; }
+.xp__item { padding: 18px 0; border-top: 1px solid var(--rule); }
+.xp__group .xp__item:first-child { border-top: 0; padding-top: 0; }
+.xp__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.xp__role { font-size: 17px; }
+.xp__org { font-size: 12.5px; color: var(--accent); margin-top: 4px; }
+.xp__period { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.xp__note { color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; margin-top: 10px; max-width: 70ch; }
+@media (max-width: 560px) {
+  .xp__head { flex-direction: column; gap: 4px; }
+}
