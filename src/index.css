@@ -205,3 +205,27 @@ p { margin: 0; }
   .proof { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .actions .button { flex: 1 1 auto; justify-content: center; }
 }
+
+.arc__intro { font-size: 18px; color: var(--ink); margin-bottom: 40px; max-width: 40ch; }
+.arc__line {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  position: relative;
+}
+.arc__line::before {
+  content: ''; position: absolute; top: 9px; left: 0; right: 0;
+  height: 2px; background: var(--accent); opacity: 0.4;
+}
+.arc__stage { position: relative; padding: 0 18px 0 0; }
+.arc__n {
+  display: inline-flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+  font-size: 12px; color: var(--bg); background: var(--accent);
+  width: 20px; height: 20px; border-radius: 50%; margin-bottom: 16px;
+}
+.arc__stage-label { font-size: 18px; margin-bottom: 8px; }
+.arc__stage-body { color: var(--ink-muted); font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 760px) {
+  .arc__line { grid-template-columns: 1fr; gap: 24px; }
+  .arc__line::before { display: none; }
+}
