@@ -8,7 +8,7 @@ const education = [{ school: 'UCLA', degree: 'B.S. Statistics & Data Science', p
 describe('ExperienceEducation', () => {
   it('renders experience and education entries', () => {
     render(<ExperienceEducation experience={experience} education={education} />);
-    expect(screen.getByText((content) => content.includes('Trident Ember Defense'))).toBeInTheDocument();
+    expect(screen.getByText('Trident Ember Defense · LA')).toBeInTheDocument();
     expect(screen.getByText('UCLA')).toBeInTheDocument();
     expect(screen.getByText('B.S. Statistics & Data Science')).toBeInTheDocument();
   });
