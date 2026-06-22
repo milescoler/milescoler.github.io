@@ -16,5 +16,6 @@ describe('About', () => {
     expect(screen.getByText('B.S. Statistics & Data Science, UCLA')).toBeInTheDocument();
     expect(screen.getByAltText('Cole Richards')).toBeInTheDocument();
     expect(screen.getByText('Surfing')).toBeInTheDocument();
+    expect(screen.getByText(about.personal.line)).toBeInTheDocument();
   });
 });

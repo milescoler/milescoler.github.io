@@ -19,5 +19,8 @@ describe('Arc', () => {
     for (const label of ['Question', 'Analysis', 'Software', 'Field']) {
       expect(screen.getByText(label)).toBeInTheDocument();
     }
+    for (const n of ['01', '02', '03', '04']) {
+      expect(screen.getByText(n)).toBeInTheDocument();
+    }
   });
 });

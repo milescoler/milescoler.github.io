@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import { personalData } from './data/personalData';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -19,6 +19,7 @@ const reveal = {
 function App() {
   const { name, nav, hero, proof, arc, flagship, work, github, experience, education, about, contact } = personalData;
   return (
+    <MotionConfig reducedMotion="user">
     <div className="page">
       <Header name={name} nav={nav} resumeUrl={contact.resumeUrl} />
       <main className="container">
@@ -31,6 +32,7 @@ function App() {
         <motion.div {...reveal}><Contact contact={contact} /></motion.div>
       </main>
     </div>
+    </MotionConfig>
   );
 }
 
