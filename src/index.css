@@ -296,3 +296,13 @@ p { margin: 0; }
   .about__grid { grid-template-columns: 1fr; }
   .about__aside { max-width: 240px; }
 }
+
+.contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.contact__statement { font-size: 17px; margin-bottom: 24px; }
+.contact__panel { margin: 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.contact__row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--rule); }
+.contact__row:first-child { border-top: 0; }
+.contact__row dt { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.contact__row dd { margin: 0; font-size: 14.5px; }
+.contact__row dd a:hover { color: var(--accent); }
+@media (max-width: 760px) { .contact__grid { grid-template-columns: 1fr; } }
