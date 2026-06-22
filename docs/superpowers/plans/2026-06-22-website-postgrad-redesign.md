@@ -26,7 +26,8 @@ Every task's requirements implicitly include this section. Values are verbatim f
 - **One résumé only:** served at `/Cole_Richards_Resume.pdf`. No service résumé.
 - **No framework change.** React + Vite kept. Keep the `restore-source-index → vite build → sync-pages` pipeline and the GitHub Actions deploy.
 - **Cut entirely:** service/customer-facing track, service résumé, dual-track "Now" section, "secondary work" jobs (Tillys, GlenAnnie), standalone "Life" and standalone "Education" sections.
-- **Default decisions (open items resolved as follows; easy to toggle):** EmberCast **included** as a software-product example in Selected work; a light "More on GitHub" line linking `antonelli-vs-russell` and `spotify-analyzer` **included**; phone `424-757-3084` **kept** public (single data field, trivial to remove); canonical résumé is the existing `Cole_Richards_Resume.pdf` (the technical/data one) — confirm it is current before final build.
+- **Default decisions (open items resolved as follows; easy to toggle):** EmberCast **included** as a software-product example in Selected work; a light "More on GitHub" line linking `antonelli-vs-russell` and `spotify-analyzer` **included**; phone `424-757-3084` **kept** public (single data field, trivial to remove).
+- **Canonical résumé:** the updated ML/Data-Scientist résumé `coleresume_ml.pdf` (provided by Cole, at repo root). It is copied to `public/Cole_Richards_Resume.pdf` and served at the stable URL `/Cole_Richards_Resume.pdf` (clean download filename). The old `Cole_Richards_Resume.pdf` / `Cole_Richards_Resume_Service.pdf` root copies were already removed by Cole; the stale `public/Cole_Richards_Resume.pdf` (5 KB) and `public/Cole_Richards_Resume_Service.pdf` must be replaced/removed (Task 15).
 - **Branch:** work on `redesign/blueprint-2026`, created from current `HEAD` (carries the committed spec and existing image assets). The redesign supersedes the `refresh/dark-modern-2026` dark direction. PR into `main` when done.
 
 ---
@@ -522,21 +523,21 @@ export const personalData = {
   },
   work: [
     {
-      title: 'California Wildfire Risk Model',
-      stack: ['Python', 'GeoPandas', 'Plotly', 'Streamlit'],
+      title: 'Sleep Forecasting from Wearable Signals',
+      stack: ['Python', 'pandas', 'scikit-learn', 'statsmodels'],
       blurb:
-        'ZIP-level wildfire risk score for LA County combining CAL FIRE hazard zones, 30-year fire-perimeter history, and vegetation indices. Validating against CA Dept. of Insurance non-renewal rates; deploying as a Streamlit dashboard.',
+        'End-to-end ML pipeline on multi-modal Apple Watch sensor data (HR, HRV, activity, steps, prior sleep) to predict next-night sleep quality. Engineered time-domain and lagged features for multi-day carryover; held-out-week time-series cross-validation; gradient boosting vs. linear models — step count and afternoon HR were the strongest predictors of REM.',
       arcTag: 'Analysis → Software',
-      domainTag: 'Physical world',
+      domainTag: 'Health & behavior',
       inProgress: true,
     },
     {
-      title: 'Personal Health & Training Load Analysis',
-      stack: ['Python', 'pandas', 'statsmodels', 'matplotlib'],
+      title: 'California Wildfire Risk Model',
+      stack: ['Python', 'GeoPandas', 'Plotly', 'Streamlit'],
       blurb:
-        'Longitudinal analysis of my own Apple Watch and training data — modeling training load against recovery, sleep, and HRV across surfing, volleyball, and strength training. Time-series decomposition, autocorrelation, mixed-effects regression.',
-      arcTag: 'Analysis',
-      domainTag: 'Health & behavior',
+        'ZIP-level wildfire risk classifier for LA County on noisy, incomplete spatial data — CAL FIRE hazard zones, 30-year fire-perimeter history, and vegetation indices. Validated against external ground truth (CA Dept. of Insurance non-renewal rates); deploying as a Streamlit dashboard.',
+      arcTag: 'Analysis → Software',
+      domainTag: 'Physical world',
       inProgress: true,
     },
     {
@@ -604,7 +605,7 @@ export const personalData = {
       school: 'University of California, Los Angeles',
       degree: 'B.S. Statistics & Data Science',
       period: 'Sep 2024 – Jun 2026',
-      detail: 'Applied Geostatistics (C173), Computation & Optimization (102B), Design & Analysis of Experiments (141XP), Regression & Data Mining, Probability.',
+      detail: 'Computation & Optimization (102B), Applied Geostatistics (C173), Regression & Data Mining (101C), Statistical Consulting (141XP), Probability (100A).',
     },
     {
       school: 'Santa Barbara City College',
@@ -1926,10 +1927,15 @@ git commit -m "feat: contour/grid motif + arc draw-in motion"
 **Interfaces:**
 - Produces: a build whose root sync copies only `Cole_Richards_Resume.pdf`.
 
-- [ ] **Step 1: Confirm the canonical résumé**
+- [ ] **Step 1: Put the updated résumé at the served path**
 
-Run: `ls -la *.pdf public/*.pdf`
-Confirm `Cole_Richards_Resume.pdf` (root + `public/`) is the current technical résumé. (If a newer file exists among the strays, copy it over `public/Cole_Richards_Resume.pdf` first.)
+Cole's updated ML/Data-Scientist résumé is at the repo root as `coleresume_ml.pdf` (~138 KB). Copy it to the stable served filename:
+
+```bash
+cp coleresume_ml.pdf public/Cole_Richards_Resume.pdf
+ls -la public/Cole_Richards_Resume.pdf
+```
+Expected: `public/Cole_Richards_Resume.pdf` is now ~138 KB (the updated version, not the stale 5 KB file).
 
 - [ ] **Step 2: Update `scripts/sync-pages.mjs` to sync only one résumé**
 
@@ -1945,14 +1951,14 @@ for (const file of ['Cole_Richards_Resume.pdf']) {
 }
 ```
 
-- [ ] **Step 3: Delete the service résumé and stray PDFs**
+- [ ] **Step 3: Remove the service résumé and the root source copy**
 
 ```bash
-git rm Cole_Richards_Resume_Service.pdf public/Cole_Richards_Resume_Service.pdf
-rm -f coleresume-a-042126.pdf coleresume-b-042726.pdf
+git rm --ignore-unmatch public/Cole_Richards_Resume_Service.pdf
+rm -f coleresume_ml.pdf
 ```
 
-(The `coleresume-*` files are untracked, so `rm -f` is correct; the service résumés are tracked, so `git rm`.)
+Notes: Cole already deleted the old root `Cole_Richards_Resume.pdf` and `Cole_Richards_Resume_Service.pdf` from the working tree (they show as deleted in `git status`); those deletions get staged at commit time in Step 5. `coleresume_ml.pdf` is the untracked source — removed now that its content lives in `public/Cole_Richards_Resume.pdf`.
 
 - [ ] **Step 4: Verify the build serves one résumé**
 
@@ -1963,8 +1969,9 @@ Expected: only `dist/Cole_Richards_Resume.pdf`.
 - [ ] **Step 5: Commit**
 
 ```bash
-git add scripts/sync-pages.mjs
-git commit -m "chore: single résumé; drop service résumé + stray PDFs"
+git add public/Cole_Richards_Resume.pdf scripts/sync-pages.mjs
+git add Cole_Richards_Resume.pdf Cole_Richards_Resume_Service.pdf  # stage the root deletions Cole already made
+git commit -m "chore: install updated résumé; single résumé; drop service + stray PDFs"
 ```
 
 ---
