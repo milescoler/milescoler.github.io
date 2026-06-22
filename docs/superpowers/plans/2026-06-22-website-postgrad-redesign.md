@@ -609,14 +609,14 @@ export const personalData = {
     },
     {
       school: 'Santa Barbara City College',
-      degree: 'A.A. Mathematics · A.A. Computer Science',
+      degree: 'A.S. Mathematics',
       period: 'Aug 2022 – May 2024',
       detail: 'GPA 3.98 · President\'s Honor Roll.',
     },
   ],
   about: {
     paragraphs: [
-      'I came up through community college — A.A. degrees in Math and Computer Science at SBCC — then a B.S. in Statistics & Data Science at UCLA. That path taught me how to work: show up, do the reading, take the harder course.',
+      'I came up through community college — an A.S. in Mathematics at SBCC — then a B.S. in Statistics & Data Science at UCLA. That path taught me how to work: show up, do the reading, take the harder course.',
       "What I care about is taking a hard problem all the way down — from the question and the data to software that ships and, when it counts, out to the field. I'm domain-agnostic: drawn to the physical world, health and human behavior, and software. I want to keep building things that are useful and grounded.",
     ],
     facts: [
