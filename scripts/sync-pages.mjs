@@ -21,7 +21,7 @@ if (existsSync(indexSource)) {
   cpSync(indexSource, indexTarget);
 }
 
-for (const file of ['Cole_Richards_Resume.pdf', 'Cole_Richards_Resume_Service.pdf']) {
+for (const file of ['Cole_Richards_Resume.pdf']) {
   const src = resolve(distDir, file);
   const tgt = resolve(root, file);
   if (existsSync(src)) {
