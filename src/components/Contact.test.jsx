@@ -25,4 +25,9 @@ describe('Contact', () => {
     expect(screen.getByRole('link', { name: /github\.com\/milescoler/ })).toHaveAttribute('href', contact.github);
     expect(screen.getByRole('link', { name: /résumé/i })).toHaveAttribute('href', contact.resumeUrl);
   });
+
+  it('builds a tel: href by stripping non-digits from the phone', () => {
+    render(<Contact contact={contact} />);
+    expect(screen.getByRole('link', { name: /424-757-3084/ })).toHaveAttribute('href', 'tel:4247573084');
+  });
 });

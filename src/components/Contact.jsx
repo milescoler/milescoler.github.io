@@ -18,7 +18,7 @@ export default function Contact({ contact }) {
           <div className="contact__row"><dt>Email</dt><dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd></div>
           <div className="contact__row"><dt>Phone</dt><dd><a href={telHref}>{contact.phone}</a></dd></div>
           <div className="contact__row"><dt>LinkedIn</dt><dd><a href={contact.linkedin} target="_blank" rel="noreferrer">in/milescoler</a></dd></div>
-          <div className="contact__row"><dt>GitHub</dt><dd><a href={contact.github} target="_blank" rel="noreferrer">{contact.github.replace('https://', '')}</a></dd></div>
+          <div className="contact__row"><dt>GitHub</dt><dd><a href={contact.github} target="_blank" rel="noreferrer">{contact.github.replace(/^https?:\/\//, '')}</a></dd></div>
           <div className="contact__row"><dt>Trident</dt><dd><a href={`mailto:${contact.tridentEmail}`}>{contact.tridentEmail}</a></dd></div>
         </dl>
       </div>
