@@ -160,7 +160,7 @@ export const personalData = {
   about: {
     paragraphs: [
       'I started at Santa Barbara City College with an A.S. in Math, then finished a B.S. in Statistics & Data Science at UCLA. That route taught me how to work: show up, do the reading, take the harder class.',
-      "What I care about is following a problem the whole way — the question, the data, the software, and the part where it meets the real world. I don't care much which field it's in; wildfire, health, sports, plain software all pull at me. I just want to build things that are actually useful.",
+      "What I care about is solving hard problems and being in it at every step — shaping the question and hunting down the data, building software to fix the specific workflows in my own life, or driving out to see a wildfire-sprinkler install through on a real customer's house for the company I started with my two best friends. I'm not picky about the field; I just want the whole problem, not one slice of it.",
     ],
     facts: [
       { label: 'Degree', value: 'B.S. Statistics & Data Science, UCLA' },
