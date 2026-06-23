@@ -171,7 +171,7 @@ export const personalData = {
     headshot: { src: headshotImage, alt: 'Cole Richards', caption: 'Cole Richards' },
     personal: {
       line: 'None of this is separate from how I work. The patience and the competitiveness come from the same place.',
-      interests: ['Surfing', 'Volleyball coaching', 'Spearfishing', 'Yoga & meditation', 'Guitar', 'Soccer'],
+      interests: ['Surfing', 'Volleyball coaching', 'Yoga & meditation', 'Guitar', 'Soccer'],
     },
   },
   contact: {
