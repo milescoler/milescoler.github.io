@@ -18,7 +18,7 @@ export const personalData = {
     credential: 'UCLA Statistics & Data Science',
     headline: 'Hard problems, end to end.',
     subline:
-      "I'm Cole Richards. I take problems from the raw question and the data through to working software — and, when it counts, out to the field. Recently: co-founded a wildfire-defense startup and wrote most of the software behind it. Now open to the right hard problems to work on next.",
+      "I'm Cole Richards. I like problems I can carry the whole way — from the first messy question to the data, the software, and the people who end up using it. I co-founded a wildfire-defense startup and built most of its software. Now I'm looking for the next one worth the work.",
   },
   proof: [
     { value: '$20K+', label: 'early revenue' },
@@ -27,12 +27,12 @@ export const personalData = {
     { value: 'full', label: 'ops stack' },
   ],
   arc: {
-    intro: 'Most people own one slice of this. I work the whole line.',
+    intro: "Most people do one part of this. I'd rather do all of it.",
     stages: [
-      { n: '01', label: 'Question', body: 'Start with the real problem and who it actually hurts.' },
-      { n: '02', label: 'Analysis', body: 'Find the signal: statistics, geospatial, modeling.' },
-      { n: '03', label: 'Software', body: 'Build the tool that puts the answer to work.' },
-      { n: '04', label: 'Field', body: 'Take it to the real world and make it hold up.' },
+      { n: '01', label: 'Question', body: "Work out what's actually broken, and who it hurts." },
+      { n: '02', label: 'Analysis', body: 'Get into the data until it says something real.' },
+      { n: '03', label: 'Software', body: 'Build the thing that turns that into a decision.' },
+      { n: '04', label: 'Field', body: 'Put it in front of the real world and see what breaks.' },
     ],
   },
   flagship: {
@@ -40,23 +40,23 @@ export const personalData = {
     company: 'Trident Ember Defense',
     link: 'https://tridentemberdefense.com',
     problem:
-      "Wildfires take homes through wind-driven embers, and passive prep leaves a gap in the moment that matters. Trident designs and installs active exterior sprinkler systems that pre-wet a home and its perimeter. Wet homes don't burn.",
+      "A wildfire usually takes a house through wind-blown embers, and the standard prep does nothing in that window. Trident builds and installs exterior sprinkler systems that soak the roof and the yard before the fire gets there. Wet homes don't burn.",
     stages: [
       {
         stage: 'Question',
-        body: 'Who needs active defense first — and how do you build a business that can deliver it across California?',
+        body: 'Work out who needs this first, and how to actually run a business that can install it across California.',
       },
       {
         stage: 'Analysis',
-        body: 'Geospatial risk targeting in QGIS and ArcGIS — layering WUI zones, CAL FIRE hazard-severity zones, vegetation, and 30 years of fire perimeters to prioritize outreach.',
+        body: 'Score risk with QGIS and ArcGIS, layering fire-hazard zones, vegetation, and 30 years of burn history to decide where to knock on doors.',
       },
       {
         stage: 'Software',
-        body: 'Wrote most of the internal stack from scratch — CRM, quoter, 3D-print queue, 2D sprinkler-mapping tool, customer planner — on Supabase and Mapbox.',
+        body: 'Wrote most of the internal stack from scratch: the CRM, quoter, 3D-print queue, sprinkler-mapping tool, and customer planner. Supabase and Mapbox under the hood.',
       },
       {
         stage: 'Field',
-        body: 'Led execution on site — 3 installs and $20K+ early revenue, including field lead on a 3,400 sq ft home with an 8-person crew.',
+        body: 'Ran the installs on site: 3 jobs, $20K+ in early revenue, and crew lead on a 3,400 sq ft house with eight people.',
       },
     ],
     outcomes: '$20K+ early revenue · 3 system installs · 8-person crew · full ops stack shipped',
@@ -70,7 +70,7 @@ export const personalData = {
       title: 'Sleep Forecasting from Wearable Signals',
       stack: ['Python', 'pandas', 'scikit-learn', 'statsmodels'],
       blurb:
-        'End-to-end ML pipeline on multi-modal Apple Watch sensor data (HR, HRV, activity, steps, prior sleep) to predict next-night sleep quality. Engineered time-domain and lagged features for multi-day carryover; held-out-week time-series cross-validation; gradient boosting vs. linear models — step count and afternoon HR were the strongest predictors of REM.',
+        "I pulled a couple of years of my own Apple Watch data to see how well one day predicts the next night's sleep. The surprise: step count and late-afternoon heart rate mattered most for REM. I was careful with the testing, so the result isn't just noise.",
       arcTag: 'Analysis → Software',
       domainTag: 'Health & behavior',
       inProgress: true,
@@ -79,7 +79,7 @@ export const personalData = {
       title: 'California Wildfire Risk Model',
       stack: ['Python', 'GeoPandas', 'Plotly', 'Streamlit'],
       blurb:
-        'ZIP-level wildfire risk classifier for LA County on noisy, incomplete spatial data — CAL FIRE hazard zones, 30-year fire-perimeter history, and vegetation indices. Validated against external ground truth (CA Dept. of Insurance non-renewal rates); deploying as a Streamlit dashboard.',
+        'A map that scores wildfire risk down to the ZIP code across LA County, built from fire-hazard zones, 30 years of burn history, and vegetation data. I checked it against where insurers are actually dropping homes. Turning it into a dashboard anyone can open.',
       arcTag: 'Analysis → Software',
       domainTag: 'Physical world',
       inProgress: true,
@@ -88,7 +88,7 @@ export const personalData = {
       title: 'EmberCast',
       stack: ['Swift', 'Public data APIs'],
       blurb:
-        'A mobile app concept for live and historical wildfire conditions — a dashboard plus a wind-particle map — built to turn messy public data into something a homeowner or firefighter can read fast.',
+        "A phone app for checking wildfire conditions at a glance: a simple dashboard and a live wind map. The idea was to take scattered public data and make it readable in a few seconds, whether you're a homeowner or on a crew.",
       arcTag: 'Software',
       domainTag: 'Software product',
       inProgress: false,
@@ -98,7 +98,7 @@ export const personalData = {
       title: 'Geostatistical Kriging Analysis',
       stack: ['R', 'geoR', 'gstat'],
       blurb:
-        'UCLA C173 coursework: ordinary and universal kriging with variogram fitting and PRESS cross-validation to predict environmental conditions across unsampled locations.',
+        'A coursework project on predicting environmental conditions for places nobody measured, using spatial statistics to fill in the gaps between sample points and checking how far off the guesses were.',
       arcTag: 'Analysis',
       domainTag: 'Methods',
       inProgress: false,
@@ -107,7 +107,7 @@ export const personalData = {
       title: 'Airbnb Amenity Pricing Analysis',
       stack: ['R', 'tidyverse', 'glmnet'],
       blurb:
-        'LASSO logistic regression with phrase-level amenity tokenization to identify which listing features predict above-median pricing. AUC evaluation with neighborhood-stratified confounding analysis.',
+        'Which Airbnb amenities actually push a listing above the median price? I worked it out from the listing text, then checked the answer held up neighborhood by neighborhood instead of just overall.',
       arcTag: 'Analysis',
       domainTag: 'Methods',
       inProgress: false,
@@ -118,7 +118,6 @@ export const personalData = {
     url: 'https://github.com/milescoler',
     repos: [
       { label: 'antonelli-vs-russell — F1 telemetry analysis', url: 'https://github.com/milescoler/antonelli-vs-russell' },
-      { label: 'spotify-analyzer', url: 'https://github.com/milescoler/spotify-analyzer' },
     ],
   },
   experience: [
@@ -160,8 +159,8 @@ export const personalData = {
   ],
   about: {
     paragraphs: [
-      'I came up through community college — an A.S. in Mathematics at SBCC — then a B.S. in Statistics & Data Science at UCLA. That path taught me how to work: show up, do the reading, take the harder course.',
-      "What I care about is taking a hard problem all the way down — from the question and the data to software that ships and, when it counts, out to the field. I'm domain-agnostic: drawn to the physical world, health and human behavior, and software. I want to keep building things that are useful and grounded.",
+      'I started at Santa Barbara City College with an A.S. in Math, then finished a B.S. in Statistics & Data Science at UCLA. That route taught me how to work: show up, do the reading, take the harder class.',
+      "What I care about is following a problem the whole way — the question, the data, the software, and the part where it meets the real world. I don't care much which field it's in; wildfire, health, sports, plain software all pull at me. I just want to build things that are actually useful.",
     ],
     facts: [
       { label: 'Degree', value: 'B.S. Statistics & Data Science, UCLA' },
@@ -171,13 +170,13 @@ export const personalData = {
     ],
     headshot: { src: headshotImage, alt: 'Cole Richards', caption: 'Cole Richards' },
     personal: {
-      line: "None of this is separate from how I work — it's where the patience, the competitive edge, and the ability to read a room come from.",
+      line: 'None of this is separate from how I work. The patience and the competitiveness come from the same place.',
       interests: ['Surfing', 'Volleyball coaching', 'Spearfishing', 'Yoga & meditation', 'Guitar', 'Soccer'],
     },
   },
   contact: {
     statement:
-      'Open to the right hard problems — in software, data, or wherever they are. Easiest way to reach me is email.',
+      "I'm looking for a good problem to work on next — software, data, or something in between. Email's the best way to reach me.",
     email: 'milescoler@gmail.com',
     tridentEmail: 'cole@tridentemberdefense.com',
     phone: '424-757-3084',
